@@ -30,7 +30,7 @@ Responsive hemsida (windows, apple, android, IOS)
 9. SEO best practice (Low Priority)
 -- 
 
-**Dabtabas abstrakt**
+**Databas abstrakt**
 
 Produkter:
 -- Produktnummer (ID)
