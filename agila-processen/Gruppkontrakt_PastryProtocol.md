@@ -1,7 +1,7 @@
 #Vilka dagar och tider är vii tillgängliga för varandra?
 
-    : Vardagar - 09:00 - 15:00?
-    : Daily Standup 09:00
+    : Vardagar - 09:00 - 15:00 
+    : Daily Standup 09:00 (De dagar vi har föreläsningar, möte 15 min innan föreläsning)
 
 #Var träffas vi? Exempel: i skolan, online, på caféer m.m.
 
@@ -42,3 +42,4 @@ git commit --signoff -m "Your commit message"
 - Mikael Sundh      ✅
 
 
+Co-Author commit
