@@ -3,18 +3,16 @@
 // =====================================================================
 
 
-    .h1-primary-color{
-        color: #402E32;
-    } 
-   .button-primary-color {
-    color: #402E32;
-   }
-    .background-color {
-        background-color: #FBD7BD;
-    }
-    .menu-background-color {
-        background-color: #FFEACF;
-    }
+    $primary-color: #402E32;
+    
+    $button-primary-color: #402E32;
+
+    $button-text-color: #FFFFFF;
+
+    $background-olor: #FBD7BD;
+    
+    $list-background-color: #FFEACF;
+    
 /*
     https://mycolor.space/?hex=%23FBD7BD&sub=1 color palette, choose wisely.
 */
