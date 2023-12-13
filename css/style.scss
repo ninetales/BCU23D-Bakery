@@ -7,24 +7,7 @@
 @import "./abstract/colors.scss";
 @import "./abstract/typography.scss";
 @import "./abstract/variables.scss";
+@import "./abstract/general.scss";
 
 @import "./sections/header.scss";
 @import "./sections/footer.scss";
-
-
-
-body,
-html {
-    width: 1200px;
-    height: 100%;
-    margin: auto;
-    padding: 0;
-    border: 2px solid grey;
-}
-
-.container {
-    margin-right: auto;
-    margin-left: auto;
-    padding: 0 20px;
-    max-width: $pageWidth;
-}
