@@ -1,3 +1,52 @@
 // =====================================================================
 // _header.scss
 // =====================================================================
+@import "../abstract/variables";
+@import "../abstract/colors";
+
+header {   
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: $pageWidthDesk;
+    margin: 0 auto;
+    padding: 1.5rem 1rem;
+    background-color: $background-color;
+    text-align: center;
+}
+
+.header-nav {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+    
+}
+
+.header-list {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    margin-right: 1rem;
+
+}
+
+.header-list li {
+    margin-right: 1.5rem;
+}
+
+.header-list a {
+    text-decoration: none;
+    color: $primary-color;
+}
+
+.header-list a:hover,
+.header-list a:focus {
+    //color: $button-primary-color; //Verify with group if color should change, if so to what?
+    text-decoration: underline; 
+}
+
+.header-button__basket {
+    margin-right: 3rem;
+}
