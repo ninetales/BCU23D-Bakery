@@ -1,13 +1,13 @@
 // =====================================================================
 // style.scss
 // =====================================================================
-@import "./vendor/reset.scss";
-@import "./vendor/normalize.scss";
+@import "./vendor/_reset.scss";
+@import "./vendor/_normalize.scss";
 
-@import "./abstract/colors.scss";
-@import "./abstract/typography.scss";
-@import "./abstract/variables.scss";
-@import "./abstract/general.scss";
+@import "./abstract/_colors.scss";
+@import "./abstract/_typography.scss";
+@import "./abstract/_variables.scss";
+@import "./abstract/_general.scss";
 
-@import "./sections/header.scss";
-@import "./sections/footer.scss";
+@import "./sections/_header.scss";
+@import "./sections/_footer.scss";

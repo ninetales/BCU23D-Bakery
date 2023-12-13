@@ -4,11 +4,11 @@
 
 body,
 html {
-    width: 1200px;
+    width: $pageWidthDesk;
     height: 100%;
     margin: auto;
     padding: 0;
-    border: 2px solid grey;
+    border: 2px solid rgb(255, 0, 0);
 }
 
 .container {
@@ -16,4 +16,12 @@ html {
     margin-left: auto;
     padding: 0 20px;
     max-width: $pageWidth;
+}
+
+
+// TEMPERARY DUMMY
+
+.buttons {
+    width: 50%;
+    margin: auto;
 }
