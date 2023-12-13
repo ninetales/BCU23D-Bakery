@@ -11,17 +11,71 @@ html {
     border: 2px solid rgb(255, 0, 0);
 }
 
+h1 {
+    font-family: $headerFont;
+    font-size: 3rem;
+}
+
+h2 {
+    font-family: $headerFont;
+    font-size: 2rem;
+}
+
+p {
+    font-family: $textFont;
+    font-size: 1.5rem;
+}
+
+.p__light {
+    color: $light-text-color;
+    font-family: $textFont;
+    font-size: 1.1rem;
+}
+
+button {
+    border: 0;
+    border-radius: 5px;
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: $button-text-color;
+    background-color: $button-primary-color;
+    font-family: $textFont;
+    font-size: 1.2rem;
+}
+
+.card {
+    border: 2px solid $card-border;
+    border-radius: 15px;
+    background-color: $list-background-color;
+}
+
 .container {
     margin-right: auto;
     margin-left: auto;
     padding: 0 20px;
-    max-width: $pageWidth;
+    max-width: $pageWidthDesk;
 }
 
 
 // TEMPERARY DUMMY
 
-.buttons {
+img {
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
+}
+
+section {
     width: 50%;
+    height: auto;
     margin: auto;
+    border: 2px solid green;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: $background-color;
 }

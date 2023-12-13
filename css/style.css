@@ -1,3 +1,77 @@
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Prevent font size inflation */
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+/* Remove default margin in favour of better control in authored CSS */
+body, h1, h2, h3, h4, p,
+figure, blockquote, dl, dd {
+  margin-block-end: 0;
+}
+
+/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+ul[role=list],
+ol[role=list] {
+  list-style: none;
+}
+
+/* Set core body defaults */
+body {
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* Set shorter line heights on headings and interactive elements */
+h1, h2, h3, h4,
+button, input, label {
+  line-height: 1.1;
+}
+
+/* Balance text wrapping on headings */
+h1, h2,
+h3, h4 {
+  text-wrap: balance;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+  color: currentColor;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input, button,
+textarea, select {
+  font: inherit;
+}
+
+/* Make sure textareas without a rows attribute are not tiny */
+textarea:not([rows]) {
+  min-height: 10em;
+}
+
+/* Anything that has been anchored to should have extra scroll margin */
+:target {
+  scroll-margin-block: 5ex;
+}
+
 /*
     https://mycolor.space/?hex=%23FBD7BD&sub=1 color palette, choose wisely.
 */
@@ -7,7 +81,46 @@ html {
   height: 100%;
   margin: auto;
   padding: 0;
-  border: 2px solid grey;
+  border: 2px solid rgb(255, 0, 0);
+}
+
+h1 {
+  font-family: "Nunito Sans";
+  font-size: 3rem;
+}
+
+h2 {
+  font-family: "Nunito Sans";
+  font-size: 2rem;
+}
+
+p {
+  font-family: "Rubik";
+  font-size: 1.5rem;
+}
+
+.p__light {
+  color: #8b8b8b;
+  font-family: "Rubik";
+  font-size: 1.1rem;
+}
+
+button {
+  border: 0;
+  border-radius: 5px;
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  color: #FFFFFF;
+  background-color: #402E32;
+  font-family: "Rubik";
+  font-size: 1.2rem;
+}
+
+.card {
+  border: 2px solid #d3d3d3;
+  border-radius: 15px;
+  background-color: #FFEACF;
 }
 
 .container {
@@ -15,4 +128,22 @@ html {
   margin-left: auto;
   padding: 0 20px;
   max-width: 1200px;
+}
+
+img {
+  width: 300px;
+  height: 300px;
+  border-radius: 15px;
+}
+
+section {
+  width: 50%;
+  height: auto;
+  margin: auto;
+  border: 2px solid green;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #FBD7BD;
 }/*# sourceMappingURL=style.css.map */
