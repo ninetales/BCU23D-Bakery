@@ -40,7 +40,7 @@ function getProducts(container) {
     // Product name
     const productName = document.createElement('span');
     productName.setAttribute('class', 'name');
-    productName.innerHTML = product.name;
+    productName.textContent = product.name;
     topSection.append(productName);
 
     // Product price and package info container
@@ -64,19 +64,19 @@ function getProducts(container) {
 
       // New Price
       const newPrice = document.createElement('span');
-      newPrice.innerHTML = `$${getNewPrice()}`;
+      newPrice.textContent = `$${getNewPrice()}`;
       newPrice.setAttribute('class', 'price__new');
       price.append(newPrice);
 
       // Old price
       const oldPrice = document.createElement('span');
-      oldPrice.innerHTML = `$${product.price.regular}`;
+      oldPrice.textContent = `$${product.price.regular}`;
       oldPrice.setAttribute('class', 'price__old');
       price.append(oldPrice);
 
       // Discount percentage (Bonus)
       const discountPercentage = document.createElement('span');
-      discountPercentage.innerHTML = `${product.price.discountPercentage}%`;
+      discountPercentage.textContent = `${product.price.discountPercentage}%`;
       discountPercentage.setAttribute('class', 'price__discount');
       price.append(discountPercentage);
     } else {
@@ -87,14 +87,14 @@ function getProducts(container) {
 
     // Amount package info
     const amountPackageInfo = document.createElement('span');
-    amountPackageInfo.innerHTML = `/ Pkg (${product.itemsPerPackage} ${
+    amountPackageInfo.textContent = `/ Pkg (${product.itemsPerPackage} ${
       product.itemsPerPackage > 1 ? 'pieces' : 'piece'
     })`;
     infoCon.append(amountPackageInfo);
 
     // Product Description
     const description = document.createElement('p');
-    description.innerHTML = product.description;
+    description.textContent = product.description;
     topSection.append(description);
 
     // Bottom section container
@@ -123,10 +123,12 @@ function getProducts(container) {
     addToCartBtn.setAttribute('data-product-id', product.id);
     addToCartBtn.setAttribute('data-product-amount', 1);
     addToCartBtn.setAttribute('class', 'product__add-to-cart');
-    addToCartBtn.innerHTML = 'Add to cart';
+    addToCartBtn.textContent = 'Add to cart';
 
     addToCartBtn.addEventListener('click', function () {
+      // ===================================================================
       // ToDo: Add cart functionality here
+      // ===================================================================
       console.log('Product ID:', this.getAttribute('data-product-id'));
       console.log('Product Amount:', this.getAttribute('data-product-amount'));
     });
