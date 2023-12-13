@@ -120,6 +120,7 @@ button {
 .card {
   border: 2px solid #d3d3d3;
   border-radius: 15px;
+  overflow: hidden;
   background-color: #FFEACF;
 }
 
@@ -133,7 +134,6 @@ button {
 img {
   width: 300px;
   height: 300px;
-  border-radius: 15px;
 }
 
 section {

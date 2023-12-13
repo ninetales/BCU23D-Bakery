@@ -47,6 +47,7 @@ button {
 .card {
     border: 2px solid $card-border;
     border-radius: 15px;
+    overflow: hidden;
     background-color: $list-background-color;
 }
 
@@ -63,7 +64,6 @@ button {
 img {
     width: 300px;
     height: 300px;
-    border-radius: 15px;
 }
 
 section {
