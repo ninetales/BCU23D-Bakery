@@ -1,0 +1,42 @@
+body {
+    background-color: $background-color;
+}
+
+.basket {
+    display: flex;
+    border: 3px solid black;
+    min-height: 60vh;
+    max-width: 100vw;
+}
+
+.basket-items {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    min-height: 50%;
+    justify-content: space-around;
+    gap: 10px;
+    list-style: none;
+    border: 3px solid black;
+    border-color: black;
+}
+
+.price {
+    display: flex;
+    border: 3px solid black;
+}
+
+.paymentButton {
+    position: relative;
+    display: flex;
+    align-self: flex-end;
+    text-overflow: none;
+    white-space: nowrap;
+    width: 100%;
+    margin-right: 30px;
+}
+
+.paymentButton::after {
+    content: '→';
+    margin-left: 5px;
+}
