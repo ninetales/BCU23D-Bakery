@@ -2,13 +2,12 @@
 // _header.scss
 // =====================================================================
 .header-container {
-    position: fixed;
+    // position: fixed;
     display: block;
     top: 0;
     right: 0;
     left: 0;
     background-color: $background-color;
-    padding: pxToRem(20) 0;
 }
 
 header {
@@ -20,6 +19,7 @@ header {
     max-width: $pageWidthDesk;
     margin: 0 auto;
     text-align: center;
+    height: $headerHeight;
 }
 
 .header-logo img {
