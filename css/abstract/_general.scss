@@ -1,0 +1,58 @@
+// =====================================================================
+// _general.scss
+// =====================================================================
+
+body,
+html {
+    height: 100%;
+    margin: auto;
+    padding: 0;
+}
+
+h1,
+h2 {
+    font-family: $headerFont;
+}
+h1 {
+    font-size: pxToRem(40);
+}
+h2 {
+    font-size: pxToRem(30);
+}
+
+p {
+    font-family: $textFont;
+    font-size: pxToRem(25);
+}
+
+.text__light {
+    color: $light-text-color;
+    font-family: $textFont;
+    font-size: pxToRem(10);
+}
+
+button {
+    border: 0;
+    border-radius: pxToRem(5);
+    padding: pxToRem(10);
+    padding-left: pxToRem(20);
+    padding-right: pxToRem(20);
+    color: $button-text-color;
+    background-color: $button-primary-color;
+    font-family: $textFont;
+    font-size: pxToRem(20);
+}
+
+.card {
+    border: 2px solid $card-border-color;
+    border-radius: pxToRem(15);
+    overflow: hidden;
+    background-color: $list-background-color;
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0 20px;
+    max-width: $pageWidthDesk;
+}
