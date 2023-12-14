@@ -14,21 +14,21 @@ h2 {
     font-family: $headerFont;
 }
 h1 {
-    font-size: 3rem;
+    font-size: pxToRem(40);
 }
 h2 {
-    font-size: 2rem;
+    font-size: pxToRem(30);
 }
 
 p {
     font-family: $textFont;
-    font-size: 1.5rem;
+    font-size: pxToRem(25);
 }
 
 .text__light {
     color: $light-text-color;
     font-family: $textFont;
-    font-size: 1.1rem;
+    font-size: pxToRem(10);
 }
 
 button {

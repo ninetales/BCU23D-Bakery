@@ -2,5 +2,9 @@
 // _typography.scss
 // =====================================================================
 
-$headerFont: "Nunito Sans";
-$textFont: "Rubik";
+$headerFont: "Nunito Sans", Arial;
+$textFont: "Rubik", Arial;
+
+@function pxToRem($size) {
+    @return calc($size / 16) * 1rem;
+}
