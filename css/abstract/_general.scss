@@ -4,19 +4,19 @@
 
 body,
 html {
-    width: $pageWidthDesk;
     height: 100%;
     margin: auto;
     padding: 0;
 }
 
-h1 {
-    font-family: $headerFont;
-    font-size: 3rem;
-}
-
+h1,
 h2 {
     font-family: $headerFont;
+}
+h1 {
+    font-size: 3rem;
+}
+h2 {
     font-size: 2rem;
 }
 
@@ -25,7 +25,7 @@ p {
     font-size: 1.5rem;
 }
 
-.p__light {
+.text__light {
     color: $light-text-color;
     font-family: $textFont;
     font-size: 1.1rem;
@@ -55,26 +55,4 @@ button {
     margin-left: auto;
     padding: 0 20px;
     max-width: $pageWidthDesk;
-}
-
-
-// TEMPERARY DUMMY
-
-img {
-    width: 300px;
-    height: 300px;
-}
-
-section {
-    width: 50%;
-    height: auto;
-    margin: auto;
-    border: 2px solid green;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    background-color: $background-color;
 }
