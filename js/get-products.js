@@ -130,9 +130,11 @@ function getProducts(container) {
       // ===================================================================
       // ToDo: Add cart functionality here
       // ===================================================================
-      amountInput.value = 1; // Reset input value to 1
       console.log('Product ID:', this.getAttribute('data-product-id'));
       console.log('Product Amount:', this.getAttribute('data-product-amount'));
+
+      amountInput.value = 1; // Reset input value to 1
+      addToCartBtn.setAttribute('data-product-amount', 1); // Reset button amount info
     });
 
     bottomSection.append(addToCartBtn);
