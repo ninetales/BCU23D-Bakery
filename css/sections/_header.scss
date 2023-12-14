@@ -1,39 +1,52 @@
 // =====================================================================
 // _header.scss
 // =====================================================================
-@import "../abstract/variables";
-@import "../abstract/colors";
+.header-container {
+    position: fixed;
+    display: block;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: $background-color;
+    padding: pxToRem(20) 0;
+}
 
-header {   
+header {
     display: flex;
     align-items: center;
+    gap: pxToRem(8);
     justify-content: space-between;
     width: 100%;
     max-width: $pageWidthDesk;
     margin: 0 auto;
-    padding: pxToRem(20) pxToRem(20);
-    background-color: $background-color;
     text-align: center;
 }
 
-.header-nav {
-    flex-grow: 1;
-    display: flex;
-    justify-content: flex-end;
-    
+.header-logo img {
+    object-fit: contain;
 }
 
-.header-list {
+.header-nav {
+    display: flex;
+    justify-content: flex-end;
+
+}
+
+header ul {
     list-style: none;
     display: flex;
     padding: 0;
     margin: 0;
-    margin-right: pxToRem(20);
+    gap: pxToRem(15);
+}
 
+.header-list {
+    display: none;
 }
 
 .header-list li {
-    margin-right: pxToRem(20);
+    display: flex;
+    align-items: center;
 }
 
 .header-list a {
@@ -44,9 +57,49 @@ header {
 .header-list a:hover,
 .header-list a:focus {
     //color: $button-primary-color; //Verify with group if color should change, if so to what?
-    text-decoration: underline; 
+    text-decoration: underline;
 }
 
-.header-button__basket {
-    margin-right: pxToRem(50);
+/* Mobile nav */
+.mobile-nav {
+    gap: pxToRem(8);
+
+    .menu-toggle,
+    .cart-toggle {
+        padding: pxToRem(10);
+    }
+
+
+    .cart-toggle {
+        position: relative;
+
+        &__notice {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 pxToRem(3);
+            top: pxToRem(-5);
+            right: pxToRem(-5);
+            color: $primary-color;
+            border: 1px solid $primary-color;
+            min-width: pxToRem(20);
+            height: 100%;
+            max-height: pxToRem(20);
+            font-size: pxToRem(10);
+            background-color: #ffe82e;
+            border-radius: 50px;
+            font-weight: bold;
+        }
+    }
+}
+
+@media screen and (min-width: $pageWidthTablet) {
+    .mobile-nav {
+        display: none;
+    }
+
+    .header-list {
+        display: flex;
+    }
 }
