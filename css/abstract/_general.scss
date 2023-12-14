@@ -33,19 +33,19 @@ p {
 
 button {
     border: 0;
-    border-radius: 5px;
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
+    border-radius: pxToRem(5);
+    padding: pxToRem(10);
+    padding-left: pxToRem(20);
+    padding-right: pxToRem(20);
     color: $button-text-color;
     background-color: $button-primary-color;
     font-family: $textFont;
-    font-size: 1.2rem;
+    font-size: pxToRem(20);
 }
 
 .card {
-    border: 2px solid $card-border;
-    border-radius: 15px;
+    border: 2px solid $card-border-color;
+    border-radius: pxToRem(15);
     overflow: hidden;
     background-color: $list-background-color;
 }
