@@ -35,6 +35,7 @@ body {
 }
 
 .price {
+    position: relative;
     display: flex;
     flex-direction: column;
     background-color: $list-background-color;
@@ -42,7 +43,7 @@ body {
     width: 20%;
     max-height: 35vh;
     justify-content: space-between;
-    gap: 10px;
+    gap: 5px;
     border-radius: pxToRem(15);
     font-size: pxToRem(18);
     border: 2px solid $card-border-color;
@@ -58,17 +59,30 @@ body {
 }
 
 .paymentButton {
-    position: relative;
+    // position: relative;
     display: flex;
-    align-self: flex-end;
+    // align-self: flex-end;
     overflow: hidden;
     align-items: center;
     align-self: center;
+    white-space: nowrap;
 }
 
 .paymentButton::after {
     content: '→';
     margin-left: 5px;
+}
+
+@media only screen and (max-width:1300px) {
+    .paymentButton {
+        font-size: pxToRem(15);
+    }
+}
+
+@media only screen and (max-width:1000px) {
+    .paymentButton {
+        font-size: pxToRem(11);
+    }
 }
 
 @media only screen and (max-width:800px) { 
@@ -98,4 +112,5 @@ body {
     .price {
         width: 100vw;
     }
+
 }
