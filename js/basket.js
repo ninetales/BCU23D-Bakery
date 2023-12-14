@@ -8,63 +8,46 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-const products = [
-    {
-      id: 1,
-      name: 'Baguettes',
-      description:
-        'A classic French baguette with a crispy crust and soft interior.',
-      image: [
-        {
-          alt: 'A classic French baguette with a crispy crust and soft interior.',
-          src: './assets/images/bread/bread_baguette.webp',
-        },
-      ],
-      price: {
-        regular: 7,
-        discountPercentage: null,
-      },
-      category: ['Bread'],
-      stock: null,
-      itemsPerPackage: 12,
-    },
-    {
-      id: 2,
-      name: 'Fig & Hazelnut',
-      description:
-        'A delightful bread with sweet figs and crunchy hazelnuts, perfect for those seeking something unique.',
-      image: [
-        {
-          alt: 'A delightful bread with sweet figs and crunchy hazelnuts, perfect for those seeking something unique.',
-          src: './assets/images/bread/bread_fikon_och_hasselnot.webp',
-        },
-      ],
-      price: {
-        regular: 7,
-        discountPercentage: null,
-      },
-      category: ['Bread'],
-      stock: null,
-      itemsPerPackage: 12,
-    }]
+    //Retrieve the UL element.
+    let basketList = document.querySelector('.basket__items');
 
-    // // //Retrieve the UL element.
-    // // let basketList = document.querySelector('basket-items');
+    //Check if the list element exists
+    // if (basketList) {
+    //     //loop through the existing data and create li items
+    //     products.forEach(function (product) {
 
-    // // // Check if the list element exists
-    // // if (basketList) {
-    // //     //loop through the existing data and create li items
-    // //     products.forEach(function (product) {
+    //         let listItem = document.createElement('li');
 
-    // //         let listItem = document.createElement('li');
+    //         listItem.textContent = `${product.name} - ${typeof product.price === 'number' ? `$${product.price.toFixed(2)}` : 'Price not available'}`;
 
-    // //         listItem.textContent = `${products.name} - ${products.price.toFixed(2)}`
-
-    // //         //Append the li element ot the ul
-    // //         basketList.appendChild(listItem);
-    // //     })
+    //         //Append the li element to the ul
+    //         basketList.appendChild(listItem);
+    //     })
 
 
     // }
-    
+
+    for (let i = 0; i < 3 && i < products.length; i++) {
+        let product = products[i];
+        let listItem = document.createElement('li');
+
+        // Check if product is a number or object, then display price
+        const priceText = typeof product.price === 'number' || (typeof product.price === 'object' && 'regular' in product.price)
+            ? `$${(typeof product.price === 'number' ? product.price : product.price.regular).toFixed(2)}`
+            : 'Price not available';
+        //Creating an img element
+        let img = document.createElement('img');
+        img.setAttribute('class', 'product__img')
+        img.setAttribute('src', product.image[0].src);
+        img.setAttribute('alt', product.image[0].alt);
+
+        
+        listItem.textContent = `${product.name} - ${priceText}`;
+
+        listItem.append(img);
+        
+        basketList.appendChild(listItem);
+        console.log('Image source:', product.image[0].src);
+    }
+
     console.log(products);
