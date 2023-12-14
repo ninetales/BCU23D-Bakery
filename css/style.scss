@@ -1,31 +1,13 @@
 // =====================================================================
 // style.scss
 // =====================================================================
-@import "./vendor/reset.scss";
-@import "./vendor/normalize.scss";
+@import "./vendor/_reset.scss";
+@import "./vendor/_normalize.scss";
 
-@import "./abstract/colors.scss";
-@import "./abstract/typography.scss";
-@import "./abstract/variables.scss";
+@import "./abstract/_colors.scss";
+@import "./abstract/_typography.scss";
+@import "./abstract/_variables.scss";
+@import "./abstract/_general.scss";
 
-@import "./sections/header.scss";
-@import "./sections/footer.scss";
-
-@import "./components/product.scss";
-
-
-
-body,
-html {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-}
-
-.container {
-    margin-right: auto;
-    margin-left: auto;
-    padding: 0 20px;
-    max-width: $pageWidth;
-}
+@import "./sections/_header.scss";
+@import "./sections/_footer.scss";
