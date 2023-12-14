@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pastry Protocol</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
+
 <body>
     <main>
         <header class="header">
@@ -13,7 +15,7 @@
                     alt="logotype portraying a bakers hat in front of the text pastry protocol the name of the company"
                     width="220" height="40">
             </a>
-    
+
             <nav class="header-nav">
                 <ul class="header-list">
                     <li><a href="shop.html">Shop</a></li>
@@ -22,7 +24,7 @@
                     <li><a href="my_profile.html">My profile</a></li>
                 </ul>
             </nav>
-    
+
             <!--Added a '0' for now as a placeholder
                 will be replaced with a function that counts the amount of items in the cart
                 needs the use of localstorage as far as I understand
@@ -32,22 +34,29 @@
             </button>
         </header>
         <!-- <h2>Fresh from our bakery</h2> -->
-        <section class="basket">
-            <ul class="basket-items">
-                <li>Test</li>
-                <li>Test</li>
-                <li>test</li>
-            </ul>
-            <div class="price">
+        <div class="basket-container">
+            <section class="basket">
+                <ul class="basket-items">
+                    <li>Test</li>
+                    <li>Test</li>
+                    <li>test</li>
+                </ul>
+                <div class="price">
+                    <h3>Order summary</h3>
+                    <p>Subtotal</p>
+                    <p>Shipping</p>
+                    <p>Tax</p>
+                    <p>total: $<span class="totalPrice">0.00</span></p>
+                    <button class="paymentButton">Continue to payment</button>                  
+                </div>
+            </section>
+            <!-- <div class="price">
                 <p>total: $<span class="totalPrice">0.00</span></p>
                 <button class="paymentButton">Continue to payment</button>
-            </div>
-        </section>
-        <!-- <div class="price">
-            <p>total: $<span class="totalPrice">0.00</span></p>
-            <button class="paymentButton">Continue to payment</button>
-        </div> -->
+            </div> -->
+        </div>
     </main>
 
 </body>
+
 </html>
