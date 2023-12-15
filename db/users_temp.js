@@ -1,3 +1,5 @@
+const logged = 1
+
 const users = [
     { 
         id: 1, 
