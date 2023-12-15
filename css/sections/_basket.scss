@@ -40,12 +40,12 @@ body {
     width: 20%;
     max-height: 35vh;
     justify-content: space-between;
-    gap: 5px;
+    gap: pxToRem(5);
     border-radius: pxToRem(15);
     font-size: pxToRem(18);
     border: 2px solid $card-border-color;
-    margin-top: 20px;
-    padding-left: 5px;
+    margin-top: pxToRem(20);
+    padding-left: pxToRem(5);
     overflow: hidden;
 }
 
