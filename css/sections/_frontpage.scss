@@ -1,0 +1,72 @@
+.hero {
+    min-height: calc(100vh - $headerHeight);
+    width: 100%;
+    background-image: url('../assets/images/frontpage.webp');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        background-color: rgba(41, 11, 11, 0.44);
+        z-index: 1;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+    }
+
+    &__placeholder {
+        position: absolute;
+        z-index: 2;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        h1 {
+            font-size: pxToRem(50);
+            font-weight: normal;
+            font-family: serif;
+            color: #fff;
+            margin: 0;
+        }
+    }
+
+    &__info {
+        text-align: center;
+    }
+
+
+
+    &__cta {
+        margin-top: pxToRem(20);
+        display: inline-block;
+        color: #fff;
+        font-size: pxToRem(18);
+        text-decoration: none;
+        text-transform: uppercase;
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        padding: pxToRem(15) pxToRem(15);
+        letter-spacing: 0.07rem;
+        transition: padding .1s ease-in;
+
+        &:hover {
+            padding-left: pxToRem(20);
+            padding-right: pxToRem(20);
+        }
+    }
+
+}
+
+@media screen and (min-width: $pageWidthMobile) {
+    .hero__placeholder h1 {
+        font-size: pxToRem(70);
+    }
+}
