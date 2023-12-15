@@ -1,0 +1,110 @@
+body {
+    background-color: $background-color;
+}
+
+.basket-container {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    justify-content: space-evenly;
+}
+
+.basket {
+    display: flex;
+    justify-content: space-around;
+    gap: 50px;
+    min-height: 60vh;
+    min-width: 100%;
+}
+
+.basket__items {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    min-height: 50%;
+    justify-content: space-around;
+    gap: 10px;
+    list-style: none;
+    background-color: $list-background-color;
+    border-radius: pxToRem(15);
+    border: 2px solid $card-border-color;
+}
+
+.price {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: $list-background-color;
+    border-radius: 10px;
+    width: 20%;
+    max-height: 35vh;
+    justify-content: space-between;
+    gap: pxToRem(5);
+    border-radius: pxToRem(15);
+    font-size: pxToRem(18);
+    border: 2px solid $card-border-color;
+    margin-top: pxToRem(20);
+    padding-left: pxToRem(5);
+    overflow: hidden;
+}
+
+.price p {
+    font-size: pxToRem(15);
+}
+
+.payment__button {
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    align-self: center;
+    white-space: nowrap;
+}
+
+.payment__button::after {
+    content: '→';
+    margin-left: 5px;
+}
+
+
+@media only screen and (max-width:1300px) {
+    .payment__button {
+        font-size: pxToRem(15);
+    }
+}
+
+@media only screen and (max-width:1000px) {
+    .payment__button {
+        font-size: pxToRem(11);
+    }
+}
+
+@media only screen and (max-width:800px) {
+    .basket-container {
+        display: flex;
+        align-items: center;
+    }
+
+    .basket {
+        flex-direction: column;
+        min-height: 100vw;
+        min-width: 100vw;
+    }
+
+    .basket__items {
+        width: 100vw;
+        min-height: 50vh;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .basket__items li {
+        flex: auto;
+
+    }
+
+    .price {
+        width: 100vw;
+    }
+
+}
