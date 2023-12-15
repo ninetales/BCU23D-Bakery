@@ -67,18 +67,6 @@ body {
 }
 
 
-
-&product__img {
-    overflow: hidden;
-    img {
-        display: block;
-        object-fit: cover;
-        width: 30%;
-        height: 100%;
-    }
-}
-
-
 @media only screen and (max-width:1300px) {
     .payment__button {
         font-size: pxToRem(15);
