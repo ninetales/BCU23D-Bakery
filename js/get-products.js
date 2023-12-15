@@ -14,7 +14,7 @@ function getProducts(container) {
   products.forEach((product) => {
     // Card container
     const productCard = document.createElement('div');
-    productCard.setAttribute('class', 'product');
+    productCard.classList.add('product', 'card');
 
     // Image container
     const imgCon = document.createElement('div');
@@ -87,6 +87,7 @@ function getProducts(container) {
 
     // Amount package info
     const amountPackageInfo = document.createElement('span');
+    amountPackageInfo.classList.add('text__light');
     amountPackageInfo.textContent = `/ Pkg (${product.itemsPerPackage} ${
       product.itemsPerPackage > 1 ? 'pieces' : 'piece'
     })`;
@@ -131,6 +132,9 @@ function getProducts(container) {
       // ===================================================================
       console.log('Product ID:', this.getAttribute('data-product-id'));
       console.log('Product Amount:', this.getAttribute('data-product-amount'));
+
+      amountInput.value = 1; // Reset input value to 1
+      addToCartBtn.setAttribute('data-product-amount', 1); // Reset button amount info
     });
 
     bottomSection.append(addToCartBtn);

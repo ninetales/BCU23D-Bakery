@@ -1,6 +1,13 @@
 // =====================================================================
 // _general.scss
 // =====================================================================
+html {
+    font-family: $textFont;
+}
+
+body {
+    background-color: $background-color;
+}
 
 body,
 html {
@@ -13,22 +20,25 @@ h1,
 h2 {
     font-family: $headerFont;
 }
+
 h1 {
     font-size: pxToRem(40);
 }
+
 h2 {
     font-size: pxToRem(30);
 }
 
-p {
-    font-family: $textFont;
-    font-size: pxToRem(25);
+p,
+span,
+a,
+li {
+    font-size: pxToRem(15);
 }
 
 .text__light {
     color: $light-text-color;
     font-family: $textFont;
-    font-size: pxToRem(10);
 }
 
 button {
@@ -40,7 +50,13 @@ button {
     color: $button-text-color;
     background-color: $button-primary-color;
     font-family: $textFont;
-    font-size: pxToRem(20);
+    font-size: pxToRem(15);
+    cursor: pointer;
+    transition: background-color 0.2s ease-in;
+}
+
+button:hover {
+    background-color: shade($button-primary-color, 35%);
 }
 
 .card {
