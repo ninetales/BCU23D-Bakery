@@ -32,4 +32,63 @@ for (let i = 0; i < 3 && i < products.length; i++) {
   console.log('Image source:', product.image[0].src);
 }
 
-console.log(products);
+document.addEventListener('DOMContentLoaded', function () {
+  const basketButton = document.querySelector('.header-button__basket');
+  const basketPreview = document.querySelector('.basket-preview');
+
+  if (basketButton && basketPreview) {
+    basketButton.addEventListener('mouseenter', function () {
+      // show the preview when hovering
+      showBasketPreview();
+    });
+
+    basketButton.addEventListener('mouseleave', function () {
+      // Hide preview when not hovering
+      hideBasketPreview();
+    });
+
+    //So the hover effect continues while within the preview box
+    basketPreview.addEventListener('mouseenter', function () {
+      showBasketPreview();
+    });
+
+    basketPreview.addEventListener('mouseleave', function () {
+      hideBasketPreview();
+    });
+  }
+});
+
+function showBasketPreview() {
+  // populate items here
+  const basketPreview = document.querySelector('.basket-preview');
+  basketPreview.style.visibility = 'visible';
+  //It populates with all the products from the list, i need to fine tune it
+  products.forEach((product) => {
+    const productElement = document.createElement('div');
+    productElement.textContent = `${product.name} - $${product.price}`;
+    basketPreview.appendChild(productElement);
+  });
+  function hideBasketPreview() {
+    // Hide preview
+    const basketPreview = document.querySelector('.basket-preview');
+    basketPreview.style.visibility = 'hidden';
+  }
+
+  const goToBasketButton = document.createElement('button');
+  goToBasketButton.textContent = 'Collect your bakery goods';
+  goToBasketButton.addEventListener('click', function () {
+    // Redirect to the basket site
+    window.location.href = 'basket.html'; // Replace with your actual URL
+  });
+
+  basketPreview.appendChild(goToBasketButton);
+
+  // Show the preview
+  basketPreview.style.display = 'block';
+}
+
+function hideBasketPreview() {
+  // Hide preview
+  const basketPreview = document.querySelector('.basket-preview');
+  basketPreview.style.visibility = 'hidden';
+}
