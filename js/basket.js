@@ -57,6 +57,7 @@ function populateBasketList() {
       listItem.appendChild(imgCon);
 
       const productDetails = document.createElement('span');
+      productDetails.setAttribute('class', 'basket__items-details')
       const priceText = typeof product.price === 'number'
         ? `$${product.price.toFixed(2)}`
         : 'Price not available';
