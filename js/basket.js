@@ -37,9 +37,10 @@ function populateBasketList() {
   basketList.innerHTML = ""; //Clear the current contents of the basket list
 
   basket.forEach(basketItem => { //Iterate through each item in the basket array
-    const product = products.find(p => p.id === basketItem.productId); //Find the product in the products array that matches the productId in the basket array
+    const product = products.find(p => p.id === Number(basketItem.productId)); //Find the product in the products array that matches the productId in the basket array
   
-    console.log('product', product);
+    console.log('test1:', product); 
+    console.log('test2', basketItem);
 
     if (product) {
       let listItem = document.createElement('li');
