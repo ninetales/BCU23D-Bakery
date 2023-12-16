@@ -30,37 +30,38 @@ function updateBasketCount() { //updates the basket icon to show the number of i
 
 // ========= Populate teh basket list with products from items added to the basket array  =========
 function populateBasketList() {
-  console.log("basket", basket);
-  console.log("populateBasketList called");
   if (!basketList) return; //Ensure the basketList is available
 
   basketList.innerHTML = ""; //Clear the current contents of the basket list
 
   basket.forEach(basketItem => { //Iterate through each item in the basket array
     const product = products.find(p => p.id === Number(basketItem.productId)); //Find the product in the products array that matches the productId in the basket array
-  
-    console.log('test1:', product); 
-    console.log('test2', basketItem);
 
     if (product) {
+      //create list item
       let listItem = document.createElement('li');
-      listItem.textContent = `${product.name} - Quantity: ${basketItem.amount}`;
-
-        console.log('basketItem2', basketItem);
       
+      //create div for image
+      const imgCon = document.createElement('div');
+      imgCon.setAttribute('class', 'basket__img-con');
+
+      //create and append image to image div
+      if(product.image && product.image.length > 0) {
+        const img = document.createElement('img');
+        img.setAttribute('src', product.image[0].src);
+        img.setAttribute('alt', product.image[0].alt);
+        imgCon.appendChild(img);
+      }
+
+      //append image div container to list item
+      listItem.appendChild(imgCon);
+
+      const productDetails = document.createElement('span');
       const priceText = typeof product.price === 'number'
         ? `$${product.price.toFixed(2)}`
         : 'Price not available';
-      listItem.textContent += ` - ${priceText}`;
-
-      if(product.image && product.image.length > 0) {
-        let img = document.createElement('img');
-        img.setAttribute('src', product.image[0].src);
-        img.setAttribute('alt', product.name);
-        listItem.appendChild(img);
-      }
-
-        console.log('basketItem3', basketItem);
+      productDetails.textContent =  `${product.name} - Quantity: ${basketItem.amount} - ${priceText}`;
+      listItem.appendChild(productDetails);
 
       basketList.appendChild(listItem);
     }
