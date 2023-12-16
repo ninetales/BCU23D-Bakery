@@ -128,7 +128,7 @@ function getProducts(container) {
 
     addToCartBtn.addEventListener("click", function () {
       // ===================================================================
-      // ToDo: Add cart functionality here
+      // cart functionality
 
       console.log("Product ID:", this.getAttribute("data-product-id"));
       console.log("Product Amount:", this.getAttribute("data-product-amount"));
@@ -144,7 +144,7 @@ function getProducts(container) {
       updateBasketCount(); //updates the basket icon to show the number of items in the basket
 
       console.log(basket);
-    });
+    }); // ===================  end cart functionality  ======================
 
     bottomSection.append(addToCartBtn);
 
