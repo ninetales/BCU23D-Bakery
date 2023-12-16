@@ -84,13 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log('dom_basket', basket);
   console.log('products', products);
   console.log('localStorage', localStorage);
-}); // =========  END DOM functionality  =========
 
-
-
-
-// Makes basket button go to basket.html
-document.addEventListener('DOMContentLoaded', function () {
   const basketButton = document.querySelector('.header-button__basket');
 
   if (basketButton) {
@@ -98,7 +92,8 @@ document.addEventListener('DOMContentLoaded', function () {
       window.location.href = 'basket.html';
     });
   }
-});
+
+}); // =========  END DOM functionality  =========
 
 
 /* ===========  Testing new version ==================
