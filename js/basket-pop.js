@@ -9,7 +9,8 @@ function addToBasket(productId, amount) {
   } else {
     basket.push({ productId, amount });
   }
-  //save the basket to local storage to allow it to be read on other pages localStorage.setItem('basket', JSON.stringify(basket));
+  //save the basket to local storage to allow it to be read on other pages 
+  localStorage.setItem('basket', JSON.stringify(basket));
 }
 
 //updates the basket icon to show the number of items in the basket
@@ -18,7 +19,8 @@ function updateBasketCount() {
     ".header-button__basket-count"
   );
   if (!basketCountElement) return; // If basket button doesn't exist, stop function
-  let totalCount = basket.reduce((sum, item) => sum + item.amount, 0); //0 signifies the initial value of the sum basketCountElement.textContent = totalCount; //updates basketCountElement with totalCount value
+  let totalCount = basket.reduce((sum, item) => sum + item.amount, 0); //0 signifies the initial value of the sum 
+  basketCountElement.textContent = totalCount; //updates basketCountElement with totalCount value
 }
 
 //Keeps the basket count up to date when the page is refreshed
@@ -41,6 +43,7 @@ window.addEventListener("storage", function (basketMemory) {
 // ! CHANGE THIS FOR BUTTON RESETS
 /*******************************************/
 //reset function
-window.addEventListener("beforeunload", function () {
-  // Clear the basket in localStorage localStorage.removeItem('basket');
-});
+//window.addEventListener("beforeunload", function () {
+  // Clear the basket in localStorage 
+  //localStorage.removeItem('basket');
+//});
