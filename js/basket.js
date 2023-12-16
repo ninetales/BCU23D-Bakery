@@ -68,6 +68,13 @@ function populateBasketList() {
 }
 // =========  END Populate teh basket list with products from items added to the basket array  =========
 
+// =========  resetBasket()  =========
+function resetBasket() {
+  basket = [];
+  localStorage.removeItem('basket');
+  updateBasketCount();
+  populateBasketList();
+} // =========  END resetBasket()  =========
 
 // =========  DOM functionality  =========
 document.addEventListener("DOMContentLoaded", function () { 
@@ -94,6 +101,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  const resetButton = document.querySelector('.header-button__basket-reset');
+  if (resetButton) {
+    resetButton.addEventListener('click', function (){
+      resetBasket();
+    });
+  }  
 }); // =========  END DOM functionality  =========
 
 
