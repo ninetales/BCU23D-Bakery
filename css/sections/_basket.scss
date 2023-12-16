@@ -21,16 +21,14 @@ body {
 .basket__items {
     display: flex;
     flex-direction: column;
-    gap: pxToRem(20);
+    gap: pxToRem(10);
 }
 
 .basket__items li {
     display: flex;
-    flex-direction: row;
     align-items: center;
     gap: pxToRem(10);
-    width: 100%;
-    height: 30vh;
+    height: 20vh;
     overflow: hidden;
     list-style: none;
     background-color: $list-background-color;
@@ -39,13 +37,11 @@ body {
 }
 
 .basket__img-con {
-    overflow: hidden;
     display: flex;
-    justify-content: left;
-}
-
-.basket__img-con img {
-    width: 50%;
+    flex-shrink: 1;
+    max-width: 20%;
+    height: 100%;
+    align-items: center
 }
 
 .basket__items-productDetails {
