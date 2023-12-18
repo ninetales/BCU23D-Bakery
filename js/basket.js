@@ -4,8 +4,11 @@
 // =========  GLOBAL Variables  =========
 let basket = [];
 let basketList;
+// =========  END GLOBAL Variables  =========
 
+// ============================================
 // ========= In basket functionality  =========
+// ============================================
 
 // =========  updateQuantity()  =========
 function updateQuantity(productId, change) {
@@ -31,19 +34,20 @@ function setQuantity(productId, newQuantity) {
   }
 } // =========  END setQuantity()  =========
 
-// =========  deleteItem() =========
+// =========  deleteItem() - Delete a single item in the basket  =========
 function deleteItem(productId) {
 
 const numericProductId = Number(productId);
 
   // Remove item from basket
-  basket = basket.filter(item => item.productId !== productId);
+  basket = basket.filter(item => Number(item.productId) !== numericProductId);
 
   console.log('deleteItem', basket);
   // Update the basket in local storage and re-render the list
   localStorage.setItem('basket', JSON.stringify(basket));
+  updateBasketCount();
   populateBasketList();
-}// =========  END deleteItem()  =========
+}// =========  END deleteItem() - Delete a single item in the basket  =========
 
 // =========  END In basket functionality  =========
 
@@ -58,7 +62,7 @@ function addToBasket(productId, amount) {
   localStorage.setItem('basket', JSON.stringify(basket));
 
   populateBasketList();
-} // =========  END GLOBAL Variables  =========
+}
 
 // =========  updateBasketCount()  =========
 function updateBasketCount() { //updates the basket icon to show the number of items in the basket
@@ -147,6 +151,7 @@ function populateBasketList() {
 
       // Create and append delete button
       const deleteButton = document.createElement('button');
+      deleteButton.setAttribute('class','basket__Items-delete');
       deleteButton.textContent = 'Delete';
       deleteButton.onclick = () => {
         console.log('delete', product.id);
@@ -161,13 +166,13 @@ function populateBasketList() {
 }
 // =========  END Populate teh basket list with products from items added to the basket array  =========
 
-// =========  resetBasket()  =========
+// =========  resetBasket() - Reset the whole basket  =========
 function resetBasket() {
   basket = [];
   localStorage.removeItem('basket');
   updateBasketCount();
   populateBasketList();
-} // =========  END resetBasket()  =========
+} // =========  END resetBasket() - Reset the whole basket  =========
 
 // =========  DOM functionality  =========
 document.addEventListener("DOMContentLoaded", function () { 
