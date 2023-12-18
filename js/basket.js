@@ -5,6 +5,48 @@
 let basket = [];
 let basketList;
 
+// ========= In basket functionality  =========
+
+// =========  updateQuantity()  =========
+function updateQuantity(productId, change) {
+  // Find item in basket and update its quantity
+  const basketItem = basket.find(item => item.productId === productId);
+  if (basketItem) {
+    basketItem.amount = Math.max(basketItem.amount + change, 0);
+    // Update the basket in local storage and re-render the list
+    localStorage.setItem('basket', JSON.stringify(basket));
+    populateBasketList();
+  }
+} // =========  END updateQuantity()  =========
+
+// =========  setQuantity()  =========
+function setQuantity(productId, newQuantity) {
+  // Find item in basket and set new quantity
+  const basketItem = basket.find(item => item.productId === productId);
+  if (basketItem) {
+    basketItem.amount = Math.max(newQuantity, 0);
+    // Update the basket in local storage and re-render the list
+    localStorage.setItem('basket', JSON.stringify(basket));
+    populateBasketList();
+  }
+} // =========  END setQuantity()  =========
+
+// =========  deleteItem() =========
+function deleteItem(productId) {
+
+const numericProductId = Number(productId);
+
+  // Remove item from basket
+  basket = basket.filter(item => item.productId !== productId);
+
+  console.log('deleteItem', basket);
+  // Update the basket in local storage and re-render the list
+  localStorage.setItem('basket', JSON.stringify(basket));
+  populateBasketList();
+}// =========  END deleteItem()  =========
+
+// =========  END In basket functionality  =========
+
 function addToBasket(productId, amount) {
   let productIndex = basket.findIndex((item) => item.productId === productId);
   if (productIndex !== -1) {
@@ -53,16 +95,65 @@ function populateBasketList() {
         imgCon.appendChild(img);
       }
 
-      //append image div container to list item
+      // Append image div container to list item
       listItem.appendChild(imgCon);
 
-      const productDetails = document.createElement('span');
-      productDetails.setAttribute('class', 'basket__items-details')
-      const priceText = typeof product.price === 'number'
-        ? `$${product.price.toFixed(2)}`
-        : 'Price not available';
-      productDetails.textContent =  `${product.name} - Quantity: ${basketItem.amount} - ${priceText}`;
+      // Create container for product details
+      const productDetails = document.createElement('div');
+      productDetails.setAttribute('class', 'basket__items-details');
+
+      // Create and append product name
+      const productNameEl = document.createElement('span');
+      productNameEl.textContent = product.name;
+      productDetails.appendChild(productNameEl);
+
+      // Create container for quantity manipulation
+      const quantityContainer = document.createElement('div');
+      quantityContainer.setAttribute('class', 'quantity-container');
+
+      // Create and append decrement button
+      const decrementButton = document.createElement('button');
+      decrementButton.textContent = '-';
+      decrementButton.onclick = () => updateQuantity(product.id, -1);
+      quantityContainer.appendChild(decrementButton);
+
+      // Create and append quantity field
+      const quantityField = document.createElement('input');
+      quantityField.type = 'number';
+      quantityField.value = basketItem.amount;
+      quantityField.onchange = (e) => setQuantity(product.id, Number(e.target.value));
+      quantityContainer.appendChild(quantityField);
+
+      // Create and append increment button
+      const incrementButton = document.createElement('button');
+      incrementButton.textContent = '+';
+      incrementButton.onclick = () => updateQuantity(product.id, 1);
+      quantityContainer.appendChild(incrementButton);
+
+      productDetails.appendChild(quantityContainer);
+
+      // Determine price text
+      const priceText = typeof product.price.regular === 'number'
+      ? `$${product.price.regular.toFixed(2)}`
+      : 'Price not available';
+
+      // Create and append product price
+      const productPriceEl = document.createElement('span');
+      productPriceEl.textContent = priceText;
+      productDetails.appendChild(productPriceEl);
+
+      // Append product details container to the list item
       listItem.appendChild(productDetails);
+
+      // Create and append delete button
+      const deleteButton = document.createElement('button');
+      deleteButton.textContent = 'Delete';
+      deleteButton.onclick = () => {
+        console.log('delete', product.id);
+        deleteItem(Number(product.id));
+      };
+
+      listItem.appendChild(deleteButton);
 
       basketList.appendChild(listItem);
     }
