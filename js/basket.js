@@ -10,17 +10,19 @@ let basketList;
 // ========= In basket functionality  =========
 // ============================================
 
-// =========  updateQuantity()  =========
+// =========  updateQuantity() - add or remove a quantity in the basket  =========
 function updateQuantity(productId, change) {
   // Find item in basket and update its quantity
-  const basketItem = basket.find(item => item.productId === productId);
+  const numericProductId = Number(productId);
+  const basketItem = basket.find(item => Number(item.productId) === numericProductId);
   if (basketItem) {
     basketItem.amount = Math.max(basketItem.amount + change, 0);
     // Update the basket in local storage and re-render the list
     localStorage.setItem('basket', JSON.stringify(basket));
+    updateBasketCount();
     populateBasketList();
   }
-} // =========  END updateQuantity()  =========
+} // =========  END updateQuantity() - add or remove a quantity in the basket  =========
 
 // =========  setQuantity()  =========
 function setQuantity(productId, newQuantity) {
