@@ -148,6 +148,15 @@ function populateBasketList() {
       productPriceEl.textContent = priceText;
       productDetails.appendChild(productPriceEl);
 
+      // Determine total price text
+      const totalPrice = (product.price.regular * basketItem.amount).toFixed(2);
+
+      // Create and append total price
+      const totalPriceEl = document.createElement('span');
+      totalPriceEl.textContent = `Total: $${totalPrice}`;
+      totalPriceEl.setAttribute('class', 'basket__items-total');
+      productDetails.appendChild(totalPriceEl);
+
       // Append product details container to the list item
       listItem.appendChild(productDetails);
 

@@ -62,6 +62,15 @@ body {
     gap: pxToRem(10);
 }
 
+.basket__items-total {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: pxToRem(20);
+}
+
 
 .price {
     position: relative;
