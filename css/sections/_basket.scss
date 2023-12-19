@@ -42,7 +42,6 @@ body {
 
 .basket__img-con {
     display: flex;
-    //flex-shrink: 1;
     max-width: 20%;
     height: 100%;
     align-items: center
@@ -112,7 +111,7 @@ body {
 .basket__empty-message {
     font-size: pxToRem(30);
     padding: pxToRem(20);
-    width: pxToRem(1000);    
+    height: pxToRem(300); 
 }
 
 
@@ -130,7 +129,6 @@ body {
     border-radius: 10px;
     width: 30%;
     max-height: pxToRem(300);
-    //justify-content: space-between;
     gap: pxToRem(5);
     border-radius: pxToRem(15);
     font-size: pxToRem(18);

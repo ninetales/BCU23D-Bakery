@@ -48,7 +48,6 @@ const numericProductId = Number(productId);
   // Remove item from basket
   basket = basket.filter(item => Number(item.productId) !== numericProductId);
 
-  console.log('deleteItem', basket);
   // Update the basket in local storage and re-render the list
   localStorage.setItem('basket', JSON.stringify(basket));
   updateBasketCount();
@@ -100,6 +99,10 @@ function populateBasketList() {
       const product = products.find(p => p.id === Number(basketItem.productId)); //Find the product in the products array that matches the productId in the basket array
 
       if (product) {
+
+        // calculate and store the total price for the basket item for later use in the order summary
+        basketItem.totalPrice = Number(product.price.regular) * basketItem.amount;
+
         //create list item
         let listItem = document.createElement('li');
         
@@ -194,13 +197,32 @@ function populateBasketList() {
         };
 
         listItem.appendChild(deleteButton);
-
         basketList.appendChild(listItem);
+
+        //updateOrderSummary();
       }
     });
   }
 }
-// =========  END Populate teh basket list with products from items added to the basket array  =========
+// =========  END Populate the basket list with products from items added to the basket array  =========
+
+
+// ======  Update order summary function  ======
+function updateOrderSummary() {
+  const vatRate = 0.12; // 12% VAT (mons)
+  const shippingRate = 10; // $10 fixed price shippingRate
+
+  //summing up the stored totals and calculating vat and adding shippinh to total
+  const subtotal = basket.reduce((sum, item) => sum + (item.totalPrice || 0), 0);
+  const vat = subtotal * vatRate;
+  const total = subtotal + vat + shippingRate;
+
+  //displaying the totals in the order summary section
+  document.querySelector('.price p:nth-child(2)').textContent = `Subtotal: $${subtotal.toFixed(2)}`;
+  document.querySelector('.price p:nth-child(4)').textContent = `VAT: $${vat.toFixed(2)}`;
+  document.querySelector('.total__price').textContent = total.toFixed(2);
+}
+
 
 // =========  resetBasket() - Reset the whole basket  =========
 function resetBasket() {
@@ -208,6 +230,7 @@ function resetBasket() {
   localStorage.removeItem('basket');
   updateBasketCount();
   populateBasketList();
+  updateOrderSummary();
 } // =========  END resetBasket() - Reset the whole basket  =========
 
 // =========  DOM functionality  =========
@@ -221,12 +244,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   updateBasketCount();
   populateBasketList();
-
-  console.log('dom_basket', basketList);
-  console.log('dom_basket', basket);
-  console.log('products', products);
-  console.log('localStorage', localStorage);
-
+  //only run the updateOrderSummary function if the payment button is present
+  //this is to prevent the function from running on the shop page to avoid 'null' errors
+  if (document.querySelector('.payment__button')) {
+    updateOrderSummary();
+  }
   const basketButton = document.querySelector('.header-button__basket');
 
   if (basketButton) {
@@ -244,27 +266,6 @@ document.addEventListener("DOMContentLoaded", function () {
 }); // =========  END DOM functionality  =========
 
 
-/* ===========  Testing new version ==================
-for (let i = 0; i < 3 && i < products.length; i++) {
-  let product = products[i];
-  let listItem = document.createElement('li');
-
-  // Check if product is a number or object, then display price
-  const priceText =
-    typeof product.price === 'number' ||
-    (typeof product.price === 'object' && 'regular' in product.price)
-      ? `$${(typeof product.price === 'number'
-          ? product.price
-          : product.price.regular
-        ).toFixed(2)}`
-      : 'Price not available';
-
-  listItem.textContent = `${product.name} - ${priceText}`;
-
-  basketList.appendChild(listItem);
-  console.log('Image source:', product.image[0].src);
-}// ==========  Testing new version ==============*/
-
 //makes sure an update on any tab is reflected on all tabs
 window.addEventListener("storage", function (basketMemory) {
   if (basketMemory.key === "basket") {
@@ -272,4 +273,3 @@ window.addEventListener("storage", function (basketMemory) {
   }
 });
 
-console.log(products);
