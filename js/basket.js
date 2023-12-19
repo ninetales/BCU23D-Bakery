@@ -276,28 +276,6 @@ window.addEventListener("storage", function (basketMemory) {
 /*************************************************************************
 **************************BASKET PREVIEW**********************************
 **************************************************************************/
-//Retrieve the UL element.
-let basket__List = document.querySelector('.basket__items');
-
-// for (let i = 0; i < 3 && i < products.length; i++) {
-//   let product = products[i];
-//   let listItem = document.createElement('li');
-
-  // Check if product is a number or object, then display price
-//   const priceText =
-//     typeof product.price === 'number' ||
-//     (typeof product.price === 'object' && 'regular' in product.price)
-//       ? `$${(typeof product.price === 'number'
-//           ? product.price
-//           : product.price.regular
-//         ).toFixed(2)}`
-//       : 'Price not available';
-
-//   listItem.textContent = `${product.name} - ${priceText}`;
-
-//   basketList.appendChild(listItem);
-//   console.log('Image source:', product.image[0].src);
-// }
 
 document.addEventListener('DOMContentLoaded', function () {
   const basketButton = document.querySelector('.header-button__basket');
@@ -307,18 +285,20 @@ document.addEventListener('DOMContentLoaded', function () {
     basketButton.addEventListener('mouseenter', function () {
       // show the preview when hovering
       showBasketPreview();
+      populateBasketList();
+      
     });
-
+    
     basketButton.addEventListener('mouseleave', function () {
       // Hide preview when not hovering
       hideBasketPreview();
     });
-
+    
     //So the hover effect continues while within the preview box
     basketPreview.addEventListener('mouseenter', function () {
       showBasketPreview();
     });
-
+    
     basketPreview.addEventListener('mouseleave', function () {
       hideBasketPreview();
     });
@@ -329,17 +309,37 @@ function showBasketPreview() {
   // populate items here
   const basketPreview = document.querySelector('.basket-preview');
   basketPreview.style.visibility = 'visible';
-  //It populates with all the products from the list, i need to fine tune it
-  products.forEach((product) => {
+  
+  //This one is to clear the preview from previous data
+  basketPreview.innerHTML = ''; 
+  // It populates with all the products from the list, i need to fine tune it
+  // products.forEach((product) => {
+  //     const productElement = document.createElement('div');
+  //     productElement.textContent = `${product.name} - $${product.price}`;
+  //     basketPreview.appendChild(productElement);
+  //   });
+ 
+  const basketProductIds = basket.map((item) => Number(item.productId));
+  const matchingProducts = products.filter((product) => basketProductIds.includes(product.id));
+
+  matchingProducts.forEach((product) => {
     const productElement = document.createElement('div');
-    productElement.textContent = `${product.name} - $${product.price}`;
+    // Display product name and price
+    const productInfo = document.createElement('span');
+    productInfo.textContent = `${product.name} - $${product.price}`;
+    productElement.appendChild(productInfo);
+    
+
+    // Display product image
+    if (product.image && product.image.length > 0) {
+      const imageElement = document.createElement('img');
+      imageElement.src = product.image[0].src;
+      imageElement.alt = product.image[0].alt;
+      productElement.appendChild(imageElement)
+    }
+
     basketPreview.appendChild(productElement);
   });
-  function hideBasketPreview() {
-    // Hide preview
-    const basketPreview = document.querySelector('.basket-preview');
-    basketPreview.style.visibility = 'hidden';
-  }
 
   const goToBasketButton = document.createElement('button');
   goToBasketButton.textContent = 'Collect your bakery goods';
@@ -359,3 +359,4 @@ function hideBasketPreview() {
   const basketPreview = document.querySelector('.basket-preview');
   basketPreview.style.visibility = 'hidden';
 }
+
