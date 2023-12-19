@@ -318,17 +318,29 @@ function showBasketPreview() {
   //     productElement.textContent = `${product.name} - $${product.price}`;
   //     basketPreview.appendChild(productElement);
   //   });
- 
+ // creating an array with numeric product ids
   const basketProductIds = basket.map((item) => Number(item.productId));
+  // Searches baskeProductIds and includes the product.id that it finds into a new array
   const matchingProducts = products.filter((product) => basketProductIds.includes(product.id));
 
+  // Looping through matchingProducts to see what products lies within
   matchingProducts.forEach((product) => {
     const productElement = document.createElement('div');
     // Display product name and price
-    const productInfo = document.createElement('span');
-    productInfo.textContent = `${product.name} - $${product.price}`;
-    productElement.appendChild(productInfo);
-    
+    const productName = document.createElement('span');
+    productName.textContent = `${product.name}`;
+    productElement.appendChild(productName);
+
+    // Display product price, turn it from an object into a number
+    const productPrice = document.createElement('span');
+    // Checks to see if product has a property named 'regular' and if it's a number
+    productPrice.textContent = typeof product.price.regular === 'number'
+    // if it is a number then show price with two decimals
+    ? `$${product.price.regular.toFixed(2)}`
+    //if not well, price not available
+    : 'Price not available'
+    productElement.appendChild(productPrice);
+
 
     // Display product image
     if (product.image && product.image.length > 0) {
