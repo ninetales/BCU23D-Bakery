@@ -316,8 +316,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+//setting timer variable
+let hideTimeout;
 
 function showBasketPreview() {
+  // clearing existing timeout
+  clearTimeout(hideTimeout);
   // populate items here
   const basketPreview = document.querySelector('.basket-preview');
   basketPreview.style.visibility = 'visible';
@@ -392,7 +396,11 @@ function showBasketPreview() {
 }
 
 function hideBasketPreview() {
+  // Creating the timer so that the preview doesn't dissapear right away
+  hideTimeout = setTimeout(() => {
+    
+    const basketPreview = document.querySelector('.basket-preview');
+    basketPreview.style.visibility = 'hidden';
+  }, 1000);
   // Hide preview
-  const basketPreview = document.querySelector('.basket-preview');
-  // basketPreview.style.visibility = 'hidden';
 }
