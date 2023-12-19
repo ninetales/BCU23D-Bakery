@@ -25,6 +25,7 @@ body {
     padding-left: 0;
     width: 70%;
     margin-top: pxToRem(20);
+    margin-left: pxToRem(3);
 }
 
 .basket__items li {
@@ -136,6 +137,7 @@ body {
     margin-top: pxToRem(20);
     padding-left: pxToRem(5);
     overflow: hidden;
+    margin-right: pxToRem(3);
 }
 
 .price p {
@@ -149,12 +151,15 @@ body {
     align-self: center;
     white-space: nowrap;
     margin-top: pxToRem(15);
-}
+} 
 
 .payment__button::after {
     content: '→';
     margin-left: 5px;
 }
+//**********  End order summary box  *********/
+
+
 
 
 @media only screen and (max-width:1300px) {
@@ -185,16 +190,26 @@ body {
         width: 100vw;
         min-height: 50vh;
         align-items: center;
-        flex-direction: row;
     }
 
     .basket__items li {
         flex: auto;
-
+        width: 95vw;
     }
 
+    
     .price {
+        position: fixed;
+        bottom: 0;
+        z-index: 10;
+        align-items: center;
+        align-self: center;
         width: 100vw;
+        max-height: pxToRem(200);
+    }
+
+    .price > * {
+        margin-top: pxToRem(2);
     }
 
 }
