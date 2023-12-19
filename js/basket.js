@@ -394,5 +394,5 @@ function showBasketPreview() {
 function hideBasketPreview() {
   // Hide preview
   const basketPreview = document.querySelector('.basket-preview');
-  basketPreview.style.visibility = 'hidden';
+  // basketPreview.style.visibility = 'hidden';
 }

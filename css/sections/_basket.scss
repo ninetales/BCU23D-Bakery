@@ -163,10 +163,14 @@ body {
 
 .basket-preview {
     position: absolute;
-    top: pxToRem(55);
-    right: pxToRem(20);
-    width: pxToRem(500);
-    height: pxToRem(800);
+    // top: pxToRem(55);
+    // right: pxToRem(20);
+    // width: pxToRem(500);
+    // height: pxToRem(800);
+    top: 8%;
+    right: 2%;
+    width: 25%;
+    height: 80%;
     border-radius: 4px;
     visibility: hidden;
     padding: 5px;
@@ -177,6 +181,10 @@ body {
     overflow-x: hidden;
 }
 
+.basket-preview button {
+    position: relative;
+    margin: auto;
+}
 .preview__Items {
     display: flex;
     align-items: center;
@@ -203,6 +211,9 @@ body {
 @media only screen and (max-width:1000px) {
     .payment__button {
         font-size: pxToRem(11);
+    }
+    .basket-preview {
+        width: 30%;
     }
 }
 
@@ -242,6 +253,10 @@ body {
 
     .price > * {
         margin-top: pxToRem(2);
+    }
+
+    .basket-preview {
+        width: 45%;
     }
 
 }
