@@ -399,8 +399,22 @@ function hideBasketPreview() {
   // Creating the timer so that the preview doesn't dissapear right away
   hideTimeout = setTimeout(() => {
     
+    // Hide preview
     const basketPreview = document.querySelector('.basket-preview');
     basketPreview.style.visibility = 'hidden';
-  }, 1000);
-  // Hide preview
+  }, 500); // setting the timer to 0.5 sec
 }
+/**************************************************************
+ ******************** PREVIEW DONE ****************************/
+
+// Payment button, alert
+document.addEventListener('DOMContentLoaded', function () {
+  const paymentButton = document.querySelector('.payment__button');
+
+  if (paymentButton) {
+    paymentButton.addEventListener('click', function () {
+      // Message to customer when they press the payment button
+      alert('Thank you for your order, you will receive a invoice very shortly. Please check your email for confirmation! Pastry Protocol wishes you all the best! 🎂');
+    });
+  }
+});
