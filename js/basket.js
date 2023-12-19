@@ -118,6 +118,13 @@ function populateBasketList() {
         // Append image div container to list item
         listItem.appendChild(imgCon);
 
+        // Create container for product details and quantity manipulation
+        const midSectionCon = document.createElement('div');
+        midSectionCon.setAttribute('class', 'basket__mid-section-con');
+
+        // Append mid section container to list item
+        listItem.appendChild(midSectionCon);
+
         // Create container for product details
         const productDetails = document.createElement('div');
         productDetails.setAttribute('class', 'basket__items-details');
@@ -126,31 +133,6 @@ function populateBasketList() {
         const productNameEl = document.createElement('span');
         productNameEl.textContent = product.name;
         productDetails.appendChild(productNameEl);
-
-        // Create container for quantity manipulation
-        const quantityContainer = document.createElement('div');
-        quantityContainer.setAttribute('class', 'quantity-container');
-
-        // Create and append decrement button
-        const decrementButton = document.createElement('button');
-        decrementButton.textContent = '-';
-        decrementButton.onclick = () => updateQuantity(product.id, -1);
-        quantityContainer.appendChild(decrementButton);
-
-        // Create and append quantity field
-        const quantityField = document.createElement('input');
-        quantityField.type = 'number';
-        quantityField.value = basketItem.amount;
-        quantityField.onchange = (e) => setQuantity(product.id, Number(e.target.value));
-        quantityContainer.appendChild(quantityField);
-
-        // Create and append increment button
-        const incrementButton = document.createElement('button');
-        incrementButton.textContent = '+';
-        incrementButton.onclick = () => updateQuantity(product.id, 1);
-        quantityContainer.appendChild(incrementButton);
-
-        productDetails.appendChild(quantityContainer);
 
         // Determine price text
         const priceText = typeof product.price.regular === 'number'
@@ -172,11 +154,39 @@ function populateBasketList() {
         productDetails.appendChild(totalPriceEl);
 
         // Append product details container to the list item
-        listItem.appendChild(productDetails);
+        midSectionCon.appendChild(productDetails);
+
+        
+        // Create container for quantity manipulation
+        const quantityContainer = document.createElement('div');
+        quantityContainer.setAttribute('class', 'quantity-container');
+
+        // Create and append decrement button
+        const decrementButton = document.createElement('button');
+        decrementButton.textContent = '-';
+        decrementButton.onclick = () => updateQuantity(product.id, -1);
+        quantityContainer.appendChild(decrementButton);
+
+        // Create and append quantity field
+        const quantityField = document.createElement('input');
+        quantityField.setAttribute('class', 'quantity-field');
+        quantityField.type = 'number';
+        quantityField.value = basketItem.amount;
+        quantityField.onchange = (e) => setQuantity(product.id, Number(e.target.value));
+        quantityContainer.appendChild(quantityField);
+
+        // Create and append increment button
+        const incrementButton = document.createElement('button');
+        incrementButton.textContent = '+';
+        incrementButton.onclick = () => updateQuantity(product.id, 1);
+        quantityContainer.appendChild(incrementButton);
+
+        midSectionCon.appendChild(quantityContainer);
+        //productDetails.appendChild(quantityContainer);
 
         // Create and append delete button
         const deleteButton = document.createElement('button');
-        deleteButton.setAttribute('class','basket__Items-delete');
+        deleteButton.setAttribute('class','basket__items-delete');
         deleteButton.textContent = 'Delete';
         deleteButton.onclick = () => {
           console.log('delete', product.id);

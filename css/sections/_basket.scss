@@ -1,18 +1,18 @@
 body {
     background-color: $background-color;
+    max-width: $pageWidthDesk;
 }
 
 .basket-container {
     display: flex;
     flex-direction: column;
-    width: 100vw;
     height: 100vh;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .basket {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 50px;
     min-height: 60vh;
     min-width: 100%;
@@ -22,13 +22,17 @@ body {
     display: flex;
     flex-direction: column;
     gap: pxToRem(10);
+    padding-left: 0;
+    width: 70%;
+    margin-top: pxToRem(20);
 }
 
 .basket__items li {
+    position: relative;
     display: flex;
     align-items: center;
     gap: pxToRem(10);
-    min-width: 20vh;
+    min-height: pxToRem(130);
     overflow: hidden;
     list-style: none;
     background-color: $list-background-color;
@@ -38,10 +42,25 @@ body {
 
 .basket__img-con {
     display: flex;
-    flex-shrink: 1;
+    //flex-shrink: 1;
     max-width: 20%;
     height: 100%;
     align-items: center
+}
+
+.basket__img-con img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.basket__mid-section-con {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: pxToRem(5);
 }
 
 .basket__items-productDetails {
@@ -53,22 +72,41 @@ body {
     padding: pxToRem(20);
 }
 
+.basket__items-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: pxToRem(2);    
+    font-weight: bold;
+}
+
 .quantity-container {
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
     gap: pxToRem(10);
+}
+.quantity-field {
+    border-radius: pxToRem(10);
+    border: 2px solid $card-border-color;
+    width: pxToRem(70);
+    text-align: center;
 }
 
 .basket__items-total {
+    position: absolute;
+    top: pxToRem(10);
+    right: pxToRem(10);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 100%;
-    height: 100%;
-    padding: pxToRem(20);
+    font-weight: bold;
+}
+
+.basket__items-delete {
+    position: absolute;
+    bottom: pxToRem(10);
+    right: pxToRem(10);
 }
 
 .basket__empty-message {
@@ -78,15 +116,21 @@ body {
 }
 
 
+
+
+
+/*****************************************************/
+/***************** Order summary box *****************/
+/*****************************************************/
 .price {
     position: relative;
     display: flex;
     flex-direction: column;
     background-color: $list-background-color;
     border-radius: 10px;
-    width: 20%;
-    max-height: 35vh;
-    justify-content: space-between;
+    width: 30%;
+    max-height: pxToRem(300);
+    //justify-content: space-between;
     gap: pxToRem(5);
     border-radius: pxToRem(15);
     font-size: pxToRem(18);
@@ -106,6 +150,7 @@ body {
     align-items: center;
     align-self: center;
     white-space: nowrap;
+    margin-top: pxToRem(15);
 }
 
 .payment__button::after {
