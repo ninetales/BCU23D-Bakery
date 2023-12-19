@@ -355,7 +355,7 @@ function showBasketPreview() {
       typeof product.price.regular === 'number'
         ? // if it is a number then show price with two decimals
           `$${product.price.regular.toFixed(2)}`
-        : //if not well, price not available
+        : //if not well, then show price not available
           'Price not available';
     productElement.appendChild(productPrice);
 
@@ -379,7 +379,7 @@ function showBasketPreview() {
   });
 
   const goToBasketButton = document.createElement('button');
-  goToBasketButton.textContent = 'Collect your bakery goods';
+  goToBasketButton.textContent = 'Go to checkout';
   goToBasketButton.addEventListener('click', function () {
     // Redirect to the basket site
     window.location.href = 'basket.html'; // Replace with your actual URL
@@ -394,5 +394,5 @@ function showBasketPreview() {
 function hideBasketPreview() {
   // Hide preview
   const basketPreview = document.querySelector('.basket-preview');
-  // basketPreview.style.visibility = 'hidden';
+  basketPreview.style.visibility = 'hidden';
 }
