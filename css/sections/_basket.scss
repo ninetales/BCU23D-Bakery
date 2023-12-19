@@ -1,18 +1,18 @@
 body {
     background-color: $background-color;
+    max-width: $pageWidthDesk;
 }
 
 .basket-container {
     display: flex;
     flex-direction: column;
-    width: 100vw;
     height: 100vh;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 
 .basket {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     gap: 50px;
     min-height: 60vh;
     min-width: 100%;
@@ -21,25 +21,115 @@ body {
 .basket__items {
     display: flex;
     flex-direction: column;
-    width: 60%;
-    min-height: 50%;
-    justify-content: space-around;
-    gap: 10px;
+    gap: pxToRem(10);
+    padding-left: 0;
+    width: 70%;
+    margin-top: pxToRem(20);
+    margin-left: pxToRem(3);
+}
+
+.basket__items li {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: pxToRem(10);
+    min-height: pxToRem(130);
+    overflow: hidden;
     list-style: none;
     background-color: $list-background-color;
     border-radius: pxToRem(15);
     border: 2px solid $card-border-color;
 }
 
+.basket__img-con {
+    display: flex;
+    max-width: 20%;
+    height: 100%;
+    align-items: center
+}
+
+.basket__img-con img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.basket__mid-section-con {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: pxToRem(5);
+}
+
+.basket__items-productDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    padding: pxToRem(20);
+}
+
+.basket__items-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: pxToRem(2);    
+    font-weight: bold;
+}
+
+.quantity-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: pxToRem(10);
+}
+.quantity-field {
+    border-radius: pxToRem(10);
+    border: 2px solid $card-border-color;
+    width: pxToRem(70);
+    text-align: center;
+}
+
+.basket__items-total {
+    position: absolute;
+    top: pxToRem(10);
+    right: pxToRem(10);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.basket__items-delete {
+    position: absolute;
+    bottom: pxToRem(10);
+    right: pxToRem(10);
+}
+
+.basket__empty-message {
+    font-size: pxToRem(30);
+    padding: pxToRem(20);
+    height: pxToRem(300); 
+}
+
+
+
+
+
+/*****************************************************/
+/***************** Order summary box *****************/
+/*****************************************************/
 .price {
     position: relative;
     display: flex;
     flex-direction: column;
     background-color: $list-background-color;
     border-radius: 10px;
-    width: 20%;
-    max-height: 35vh;
-    justify-content: space-between;
+    width: 30%;
+    max-height: pxToRem(300);
     gap: pxToRem(5);
     border-radius: pxToRem(15);
     font-size: pxToRem(18);
@@ -47,6 +137,7 @@ body {
     margin-top: pxToRem(20);
     padding-left: pxToRem(5);
     overflow: hidden;
+    margin-right: pxToRem(3);
 }
 
 .price p {
@@ -59,12 +150,16 @@ body {
     align-items: center;
     align-self: center;
     white-space: nowrap;
-}
+    margin-top: pxToRem(15);
+} 
 
 .payment__button::after {
     content: '→';
     margin-left: 5px;
 }
+//**********  End order summary box  *********/
+
+
 
 .basket-preview {
     position: absolute;
@@ -105,16 +200,26 @@ body {
         width: 100vw;
         min-height: 50vh;
         align-items: center;
-        flex-direction: row;
     }
 
     .basket__items li {
         flex: auto;
-
+        width: 95vw;
     }
 
+    
     .price {
+        position: fixed;
+        bottom: 0;
+        z-index: 10;
+        align-items: center;
+        align-self: center;
         width: 100vw;
+        max-height: pxToRem(200);
+    }
+
+    .price > * {
+        margin-top: pxToRem(2);
     }
 
 }
