@@ -369,6 +369,7 @@ function showBasketPreview() {
     // Display product image
     if (product.image && product.image.length > 0) {
       const imageElement = document.createElement('img');
+      imageElement.setAttribute('class', 'basket__img-con')
       imageElement.src = product.image[0].src;
       imageElement.alt = product.image[0].alt;
       productElement.appendChild(imageElement);
@@ -393,5 +394,5 @@ function showBasketPreview() {
 function hideBasketPreview() {
   // Hide preview
   const basketPreview = document.querySelector('.basket-preview');
-  basketPreview.style.visibility = 'hidden';
+  // basketPreview.style.visibility = 'hidden';
 }

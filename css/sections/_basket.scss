@@ -167,9 +167,29 @@ body {
     right: pxToRem(20);
     width: pxToRem(500);
     height: pxToRem(800);
-    border: solid 2px black;
+    // border: solid 2px black;
+    border-radius: 4px;
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     visibility: hidden;
+    padding: 5px;
+    z-index: 999;
+}
+
+.preview__Items {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $list-background-color;
+    padding: pxToRem(3);
+    border-radius: pxToRem(15);
+    border: pxToRem(2) solid $card-border-color;
+    margin: pxToRem(5);
+    width: 100%;
+}
+
+.preview__Items span {
+    font-weight: bold;
+    max-width: pxToRem(55);
 }
 
 @media only screen and (max-width:1300px) {
