@@ -79,7 +79,7 @@
 }
 
 .basket__items-pkg {
-color: $light-text-color;
+    color: $light-text-color;
 }
 
 .quantity-container {
@@ -90,7 +90,7 @@ color: $light-text-color;
 }
 
 .quantity-field {
-border-radius: pxToRem(10);
+    border-radius: pxToRem(10);
     border: 2px solid $card-border-color;
     width: pxToRem(70);
     text-align: center;
@@ -109,15 +109,15 @@ border-radius: pxToRem(10);
 }
 
 .basket__items-increment {
-padding: pxToRem(2);
-padding-left: pxToRem(8);
-padding-right:pxToRem(8);
+    padding: pxToRem(2);
+    padding-left: pxToRem(8);
+    padding-right: pxToRem(8);
 }
 
 .basket__items-decrement {
-padding: pxToRem(2);
-padding-left: pxToRem(8);
-padding-right:pxToRem(8);
+    padding: pxToRem(2);
+    padding-left: pxToRem(8);
+    padding-right: pxToRem(8);
 }
 
 .basket__items-total {
@@ -180,7 +180,9 @@ padding-right:pxToRem(8);
 .payment__button::after {
     content: '→';
     margin-left: 5px;
-} //**********  End order summary box  *********/
+}
+
+//**********  End order summary box  *********/
 
 
 .basket-preview {
@@ -222,7 +224,8 @@ padding-right:pxToRem(8);
     font-weight: bolder;
     max-width: pxToRem(55);
 }
-} //**********  End order summary box  *********/
+
+//**********  End order summary box  *********/
 
 @media only screen and (max-width:1300px) {
     .payment__button {
