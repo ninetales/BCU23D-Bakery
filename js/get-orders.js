@@ -1,16 +1,34 @@
+const loggedUser = users[logged]
+console.log(loggedUser);
 
 
-function welcomeMsg(user) {
+// Returns orders for spicific user based on ID, or all orders if its the Admin ID 1...
+function userOrders(orders, userId) {
+    if (userId === 0){
+        return orders
+    }else {
+        console.log(userId);
+        
+        return orders.filter( order =>  order.user_id === userId)
+    }
+}
+
+// Manipulates the h2 element to match the current logged user...
+function welcomeMsg(loggedUser) {
     const headDiv = document.querySelector('.order__container .order__head')
     const headContent = headDiv.textContent
 
-    const newContent = `${headContent} ${users[user].username}`
+    const newContent = `${headContent} ${users[logged].username}`
 
     headDiv.textContent = newContent
-    
 }
 
-welcomeMsg(1)
+welcomeMsg(logged)
+
+console.log(userOrders(orders, logged));
+
+
+
 
 
 // const main = document.getElementById('main');
