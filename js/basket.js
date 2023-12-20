@@ -199,7 +199,7 @@ function populateBasketList() {
         listItem.appendChild(deleteButton);
         basketList.appendChild(listItem);
 
-        //updateOrderSummary();
+        updateOrderSummary();
       }
     });
   }
