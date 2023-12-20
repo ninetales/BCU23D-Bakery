@@ -206,12 +206,13 @@ padding-right:pxToRem(8);
 @media only screen and (max-width:800px) {
     .basket-container {
         display: flex;
+        flex-direction: column;
         align-items: center;
     }
 
     .basket {
         flex-direction: column;
-        min-height: 100vw;
+        min-height: auto;
         min-width: 100vw;
     }
 
@@ -219,6 +220,7 @@ padding-right:pxToRem(8);
         width: 100vw;
         min-height: 50vh;
         align-items: center;
+        padding-bottom: pxToRem(200);
     }
 
     .basket__items li {
