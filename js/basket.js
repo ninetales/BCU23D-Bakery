@@ -167,6 +167,7 @@ function populateBasketList() {
 
         // Create and append decrement button
         const decrementButton = document.createElement('button');
+        decrementButton.setAttribute('class', 'basket__items-decrement');
         decrementButton.textContent = '-';
         decrementButton.onclick = () => updateQuantity(product.id, -1);
         quantityContainer.appendChild(decrementButton);
@@ -181,6 +182,7 @@ function populateBasketList() {
 
         // Create and append increment button
         const incrementButton = document.createElement('button');
+        incrementButton.setAttribute('class', 'basket__items-increment');
         incrementButton.textContent = '+';
         incrementButton.onclick = () => updateQuantity(product.id, 1);
         quantityContainer.appendChild(incrementButton);
