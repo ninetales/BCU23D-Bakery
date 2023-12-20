@@ -1,5 +1,11 @@
-let logged = localStorage.getItem('logged') ? parseInt(localStorage.getItem('logged')) : 0;
-const loggedUser = users[logged];
+let logged = localStorage.getItem('logged')
+  ? parseInt(localStorage.getItem('logged'))
+  : 0;
+
+let switchTxt = localStorage.getItem('switchTxt')
+  ? String(localStorage.getItem('switchTxt'))
+  : 'Admin';
+
 
 // Returns orders for spicific user based on ID, or all orders if its the Admin ID 1...
 function userOrders(orders, userId) {
@@ -15,7 +21,7 @@ function welcomeMsg(loggedId) {
   const headDiv = document.querySelector('.order__container .order__head');
   const headContent = headDiv.textContent;
   console.log(loggedId);
-  
+
   const newContent = `Order History - ${users[loggedId].username}`;
 
   headDiv.textContent = newContent;
@@ -42,9 +48,14 @@ function printOrders(orders) {
     const ordersArray = [];
 
     ordersArray.push(
-      logged === 0 ? `Order ID: ${order.id} User: ${users[order.user_id].username}` : `Order ID: ${order.id}`,
+      logged === 0
+        ? `Order ID: ${order.id} User: ${users[order.user_id].username}`
+        : `Order ID: ${order.id}`,
       `Order date: ${order.order_date}`,
-      !order.processed ? `Order is beeing processed...` : `Estimate delivery: ${order.lev_date}`);
+      !order.processed
+        ? `Order is beeing processed...`
+        : `Estimate delivery: ${order.lev_date}`
+    );
 
     let total = 0;
     order.order_products.forEach((product) => {
@@ -55,7 +66,7 @@ function printOrders(orders) {
       const price_tot = `${price * pkg_ordered}`;
 
       ordersArray.push(
-        `${item.name} - ${pkg_ordered}(x${pkg_amount}) = ${pkg_ordered} x ${price}$ = ${price_tot}$`
+        `${item.name} - ${pkg_ordered} /Pkg (${pkg_amount} pieces) = ${pkg_ordered} x ${price}$ = ${price_tot}$`
       );
       total = total + Number(price_tot);
     });
@@ -71,7 +82,6 @@ function createListElements() {
   const lengthOrders = ordersArray.length;
 
   console.log(ordersArray);
-  
 
   for (let i = 0; i < lengthOrders; i++) {
     const orderCard = document.createElement('div');
@@ -82,56 +92,63 @@ function createListElements() {
     leftOrder.setAttribute('class', 'order__left');
     rightOrder.setAttribute('class', 'order__right');
 
-    const lengthRecipe = ordersArray[i].length -1;
+    const lengthRecipe = ordersArray[i].length - 1;
 
     for (let y = 0; y < lengthRecipe; y++) {
-        const item = ordersArray[i][y];
-        const left = y < 2;
+      const item = ordersArray[i][y];
+      const left = y < 2;
 
-        if (y < 3) {
-          if(logged === 0 && y === 2 && item === `Order is beeing processed...`) {
-            const processBtn = document.createElement('button')
-            processBtn.setAttribute('class', 'process__btn')
-            processBtn.textContent = 'Process Order'
+      if (y < 3) {
+        if (
+          logged === 0 &&
+          y === 2 &&
+          item === `Order is beeing processed...`
+        ) {
+          const processBtn = document.createElement('button');
+          processBtn.setAttribute('class', 'process__btn');
+          processBtn.textContent = 'Process Order';
 
-            leftOrder.appendChild(processBtn)
-          }else {
-            const h3Element = document.createElement('h3');
-            h3Element.textContent = item;
+          leftOrder.appendChild(processBtn);
+        } else {
+          const h3Element = document.createElement('h3');
+          h3Element.textContent = item;
 
-            leftOrder.appendChild(h3Element);
-          }
-        }else {
-            const pElement = document.createElement('p');
-            pElement.textContent = item;
-            rightOrder.appendChild(pElement);
+          leftOrder.appendChild(h3Element);
         }
+      } else {
+        const pElement = document.createElement('p');
+        pElement.textContent = item;
+        rightOrder.appendChild(pElement);
+      }
     }
     const pElement = document.createElement('p');
     const h3Element = document.createElement('h3');
     h3Element.textContent = ordersArray[i][lengthRecipe];
-    pElement.textContent = '-----------------------------'
+    pElement.textContent = '-----------------------------';
 
-    rightOrder.appendChild(pElement)
+    rightOrder.appendChild(pElement);
     rightOrder.appendChild(h3Element);
 
-    orderCard.appendChild(leftOrder)
-    orderCard.appendChild(rightOrder)
+    orderCard.appendChild(leftOrder);
+    orderCard.appendChild(rightOrder);
     orderList.appendChild(orderCard);
   }
 }
 
-const switchBtn = document.getElementById('user__switch')
-switchBtn.addEventListener('click', e => {
+const switchBtn = document.getElementById('user__switch');
+switchBtn.textContent = switchTxt;  
+
+switchBtn.addEventListener('click', (e) => {
   logged = logged === 0 ? 1 : 0;
-  console.log(logged);
+  switchTxt = switchTxt === 'Admin' ? 'User' : 'Admin'
 
-  localStorage.setItem('logged', logged)
+  localStorage.setItem('logged', logged);
+  localStorage.setItem('switchTxt', switchTxt)
 
-  window.location.reload()
+  window.location.reload();
 
-  welcomeMsg(logged);
-})
+  // welcomeMsg(logged);
+});
 
 welcomeMsg(logged);
 createListElements();

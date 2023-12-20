@@ -15,6 +15,18 @@ const orders = [
                 product_id: 20,
                 amount_pkg: 2,
             },
+            {
+                product_id: 3,
+                amount_pkg: 2,
+            },
+            {
+                product_id: 6,
+                amount_pkg: 4,
+            },
+            {
+                product_id: 13,
+                amount_pkg: 2,
+            },
 
         ],
         order_date: '9-12-2023',
