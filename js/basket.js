@@ -184,9 +184,7 @@ function populateBasketList() {
         incrementButton.textContent = '+';
         incrementButton.onclick = () => updateQuantity(product.id, 1);
         quantityContainer.appendChild(incrementButton);
-
         midSectionCon.appendChild(quantityContainer);
-        //productDetails.appendChild(quantityContainer);
 
         // Create and append delete button
         const deleteButton = document.createElement('button');
