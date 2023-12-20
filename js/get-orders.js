@@ -41,7 +41,7 @@ function printOrders(orders) {
     const ordersArray = [];
     ordersArray.push(
       `Order date: ${order.order_date}`,
-      `Order status: ${status}`
+      `${status}`
     );
 
     let total = 0;
@@ -77,13 +77,12 @@ function createListElements() {
     leftOrder.setAttribute('class', 'order__left');
     rightOrder.setAttribute('class', 'order__right');
 
-    const lengthRecipe = ordersArray[i].length;
+    const lengthRecipe = ordersArray[i].length -1;
 
     for (let y = 0; y < lengthRecipe; y++) {
         const item = ordersArray[i][y];
         const left = y < 2;
 
-        console.log(item, left);
         if (left) {
             const h3Element = document.createElement('h3');
             h3Element.textContent = item;
@@ -99,6 +98,14 @@ function createListElements() {
             rightOrder.appendChild(pElement);
         }
     }
+    const pElement = document.createElement('p');
+    const h3Element = document.createElement('h3');
+    h3Element.textContent = ordersArray[i][lengthRecipe];
+    pElement.textContent = '-----------------------------'
+
+    rightOrder.appendChild(pElement)
+    rightOrder.appendChild(h3Element);
+
     orderCard.appendChild(leftOrder)
     orderCard.appendChild(rightOrder)
     orderList.appendChild(orderCard);

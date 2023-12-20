@@ -5,9 +5,31 @@
 .order__container {
     width: $pageWidthDesk;
     margin: auto;
-    border: 2px solid grey;
+    padding: pxToRem(30)
 }
 
-.order__head {
+.order__header {
     margin: 0;
+    padding: pxToRem(10);
+
+    display: flex;
+    justify-content: space-between;
+}
+
+.order__list {
+    padding: pxToRem(20);
+}
+
+.card__order {
+    margin-bottom: 10px;
+    display: flex;
+}
+
+.order__left, .order__right {
+    padding: pxToRem(10)
+}
+
+.order__left {
+    width: 40%;
+    border-right: 2px solid rgb(200, 188, 188);
 }
