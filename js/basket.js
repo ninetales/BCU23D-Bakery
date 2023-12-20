@@ -138,15 +138,29 @@ function populateBasketList() {
         productNameEl.textContent = product.name;
         productDetails.appendChild(productNameEl);
 
-        // Determine price text
-        const priceText = typeof product.price.regular === 'number'
-          ? `$${product.price.regular.toFixed(2)}`
-          : 'Price not available';
+        // Create constainer for price and package info
+        const priceAndPackageInfo = document.createElement("span");
+        priceAndPackageInfo.setAttribute('class', 'basket__items-price-pkg');
 
         // Create and append product price
         const productPriceEl = document.createElement('span');
-        productPriceEl.textContent = priceText;
-        productDetails.appendChild(productPriceEl);
+        productPriceEl.setAttribute('class', 'basket__items-price');
+        productPriceEl.textContent = typeof product.price.regular === 'number'
+          ? `$${product.price.regular.toFixed(2)}`
+          : 'Price not available';
+        priceAndPackageInfo.appendChild(productPriceEl);
+        
+        // Amount package info
+        const amountPackageInfo = document.createElement("span");
+        amountPackageInfo.classList.add("basket__items-pkg");
+        amountPackageInfo.textContent = `/ Pkg (${product.itemsPerPackage} ${
+        product.itemsPerPackage > 1 ? "pieces" : "piece"
+        })`;
+
+        priceAndPackageInfo.appendChild(amountPackageInfo);
+
+        // Append amount package info to price and package info container
+        productDetails.appendChild(priceAndPackageInfo);
 
         // Determine total price text
         const totalPrice = (product.price.regular * basketItem.amount).toFixed(2);
