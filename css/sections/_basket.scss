@@ -163,10 +163,6 @@
 
 .basket-preview {
     position: absolute;
-    // top: pxToRem(55);
-    // right: pxToRem(20);
-    // width: pxToRem(500);
-    // height: pxToRem(800);
     top: 8%;
     right: 2%;
     width: 25%;
@@ -183,8 +179,11 @@
 
 .basket-preview button {
     position: relative;
-    margin: auto;
+    display: inline;
+    margin-left: pxToRem(5);
+    margin-top: pxToRem(2);
 }
+
 .preview__Items {
     display: flex;
     align-items: center;
@@ -212,6 +211,7 @@
     .payment__button {
         font-size: pxToRem(11);
     }
+
     .basket-preview {
         width: 30%;
     }

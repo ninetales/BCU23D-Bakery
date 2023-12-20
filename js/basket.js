@@ -74,9 +74,12 @@ function addToBasket(productId, amount) {
 }
 
 // =========  updateBasketCount()  =========
-function updateBasketCount() { //updates the basket icon to show the number of items in the basket
-  const basketCountElement = document.querySelectorAll(".header-button__basket-count");
-  let totalCount = basket.reduce((sum, item) => sum + item.amount, 0); //0 signifies the initial value of the sum 
+function updateBasketCount() {
+  //updates the basket icon to show the number of items in the basket
+  const basketCountElement = document.querySelectorAll(
+    '.header-button__basket-count'
+  );
+  let totalCount = basket.reduce((sum, item) => sum + item.amount, 0); //0 signifies the initial value of the sum
   if (basketCountElement.length !== 0) {
     basketCountElement.forEach((counter) => {
       counter.textContent = totalCount; //updates basketCountElement with totalCount value
@@ -144,9 +147,10 @@ function populateBasketList() {
         productDetails.appendChild(productNameEl);
 
         // Determine price text
-        const priceText = typeof product.price.regular === 'number'
-          ? `$${product.price.regular.toFixed(2)}`
-          : 'Price not available';
+        const priceText =
+          typeof product.price.regular === 'number'
+            ? `$${product.price.regular.toFixed(2)}`
+            : 'Price not available';
 
         // Create and append product price
         const productPriceEl = document.createElement('span');
@@ -226,8 +230,12 @@ function updateOrderSummary() {
   const total = subtotal + vat + shippingRate;
 
   //displaying the totals in the order summary section
-  document.querySelector('.order-summary p:nth-child(2)').textContent = `Subtotal: $${subtotal.toFixed(2)}`;
-  document.querySelector('.order-summary p:nth-child(4)').textContent = `VAT: $${vat.toFixed(2)}`;
+  document.querySelector(
+    '.order-summary p:nth-child(2)'
+  ).textContent = `Subtotal: $${subtotal.toFixed(2)}`;
+  document.querySelector(
+    '.order-summary p:nth-child(4)'
+  ).textContent = `VAT: $${vat.toFixed(2)}`;
   document.querySelector('.total__price').textContent = total.toFixed(2);
 }
 
@@ -241,7 +249,7 @@ function resetBasket() {
 } // =========  END resetBasket() - Reset the whole basket  =========
 
 // =========  DOM functionality  =========
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   //Retrieve the UL element.
   basketList = document.querySelector('.basket__items');
 
@@ -339,7 +347,7 @@ function showBasketPreview() {
   // Looping through matchingProducts to see what products lies within
   matchingProducts.forEach((product) => {
     const productElement = document.createElement('div');
-    productElement.setAttribute('class', 'preview__Items')
+    productElement.setAttribute('class', 'preview__Items');
     // Display product name and price
     const productName = document.createElement('span');
     productName.textContent = `${product.name}`;
@@ -366,7 +374,7 @@ function showBasketPreview() {
     // Display product image
     if (product.image && product.image.length > 0) {
       const imageElement = document.createElement('img');
-      imageElement.setAttribute('class', 'basket__img-con')
+      imageElement.setAttribute('class', 'basket__img-con');
       imageElement.src = product.image[0].src;
       imageElement.alt = product.image[0].alt;
       productElement.appendChild(imageElement);
@@ -379,19 +387,29 @@ function showBasketPreview() {
   goToBasketButton.textContent = 'Go to checkout';
   goToBasketButton.addEventListener('click', function () {
     // Redirect to the basket site
-    window.location.href = 'basket.html'; // Replace with your actual URL
+    window.location.href = 'basket.html';
+  });
+
+  const previewResetButton = document.createElement('button');
+  previewResetButton.textContent = 'Reset Basket';
+  // Resets the basket when pressed
+  previewResetButton.addEventListener('click', function () {
+    resetBasket();
+  });
+  // Had to add this line of code otherwise the preview wouldn't refresh unless i re-hovered.
+  previewResetButton.addEventListener('click', function () {
+    showBasketPreview();
   });
 
   basketPreview.appendChild(goToBasketButton);
+  basketPreview.appendChild(previewResetButton);
 
-  // Show the preview
   basketPreview.style.display = 'block';
 }
 
 function hideBasketPreview() {
   // Creating the timer so that the preview doesn't dissapear right away
   hideTimeout = setTimeout(() => {
-    
     // Hide preview
     const basketPreview = document.querySelector('.basket-preview');
     basketPreview.style.visibility = 'hidden';
@@ -407,7 +425,10 @@ document.addEventListener('DOMContentLoaded', function () {
   if (paymentButton) {
     paymentButton.addEventListener('click', function () {
       // Message to customer when they press the payment button
-      alert('Thank you for your order, you will receive a invoice very shortly. Please check your email for confirmation! Pastry Protocol wishes you all the best! 🎂');
+      alert(
+        'Thank you for your order, you will receive a invoice very shortly. Please check your email for confirmation! Pastry Protocol wishes you all the best! 🎂'
+      );
+      resetBasket();
     });
   }
 });
