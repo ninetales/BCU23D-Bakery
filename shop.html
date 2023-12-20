@@ -15,6 +15,27 @@
 </head>
 
 <body>
+
+    <!-- ===================================================================== -->
+    <!-- Sidebar navigation -->
+    <!-- ===================================================================== -->
+    <div class="sidebar-nav" data-sidebar-nav-active="false">
+        <button class="sidebar-nav__close-btn" data-sidebar-close-btn="">
+            <?xml version="1.0" encoding="UTF-8"?><svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24"
+                fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">
+                <path
+                    d="M6.75827 17.2426L12.0009 12M17.2435 6.75736L12.0009 12M12.0009 12L6.75827 6.75736M12.0009 12L17.2435 17.2426"
+                    stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+            </svg>
+        </button>
+        <nav>
+            <ul>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="orders.html">View orders</a></li>
+            </ul>
+        </nav>
+    </div><!-- .sidebar-nav -->
+
     <!-- header section -->
     <div class="header-container">
         <header class="header container">
@@ -26,19 +47,18 @@
             <nav class="header-nav">
                 <ul class="header-list">
                     <li><a href="shop.html">Shop</a></li>
-                    <li><a href="bakery.html">Bakery</a></li>
-                    <li><a href="about_us.html">Who we are</a></li>
-                    <li><a href="my_profile.html">My profile</a></li>
+                    <li><a href="orders.html">View orders</a></li>
                     <li>
-                    <button class="header-button__basket">
-                        Basket (<span class="header-button__basket-count">0</span>)
-                    </button>
+
+                        <button class="header-button__basket">
+                            Basket (<span class="header-button__basket-count">0</span>)
+                        </button>
                     </li>
                 </ul>
                 <ul class="mobile-nav">
                     <li>
-                        <button class="cart-toggle">
-                            <span class="cart-toggle__notice">1</span>
+                        <a class="cart-toggle btn" href="basket.html">
+                            <span class="cart-toggle__notice header-button__basket-count">0</span>
                             <?xml version="1.0" encoding="UTF-8"?><svg width="24px" height="24px" stroke-width="1.5"
                                 viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">
                                 <path
@@ -56,10 +76,10 @@
                                     stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
                                 </path>
                             </svg>
-                        </button>
+                        </a>
                     </li>
                     <li>
-                        <button class="menu-toggle">
+                        <button class="menu-toggle" data-sidebar-open-btn="">
                             <?xml version="1.0" encoding="UTF-8"?><svg width="24px" height="24px" stroke-width="1.5"
                                 viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" color="#000000">
                                 <path d="M3 5H21" stroke="#fff" stroke-width="1.5" stroke-linecap="round"
@@ -85,6 +105,7 @@
     <script src="./db/products.js"></script>
     <script src="./js/get-products.js"></script>
     <script src="./js/basket.js"></script>
+    <script src="./js/sidebar-nav.js"></script>
 </body>
 
 </html>
