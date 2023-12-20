@@ -17,7 +17,7 @@ Ingenting just nu
 > Att jag måste bli bättre på att uppskatta hur lång tid tasks kommer ta.
 
 **Idag ska jag** 
-> Se över om projektet är i behov av några kritiska modifieringar. Testa funktionaliteten. 
+> Se över om projektet är i behov av några kritiska modifieringar, dvs. testa funktionaliteten. 
 
 **Ett problem jag har** 
 > Inga problem för tillfället.
