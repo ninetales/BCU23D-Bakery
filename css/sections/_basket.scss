@@ -86,10 +86,16 @@
 }
 
 .quantity-field {
-    border-radius: pxToRem(10);
+border-radius: pxToRem(10);
     border: 2px solid $card-border-color;
     width: pxToRem(70);
     text-align: center;
+}
+
+.quantity-field::-webkit-inner-spin-button,
+.quantity-field::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .basket__items-total {
