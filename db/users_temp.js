@@ -1,5 +1,3 @@
-const logged = 2
-
 const users = [
     { 
         id: 1, 

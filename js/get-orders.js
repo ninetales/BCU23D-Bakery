@@ -1,3 +1,4 @@
+const logged = 4;
 const loggedUser = users[logged]
 console.log(loggedUser);
 
@@ -7,8 +8,6 @@ function userOrders(orders, userId) {
     if (userId === 0){
         return orders
     }else {
-        console.log(userId);
-        
         return orders.filter( order =>  order.user_id === userId)
     }
 }
@@ -26,6 +25,8 @@ function welcomeMsg(loggedUser) {
 welcomeMsg(logged)
 
 console.log(userOrders(orders, logged));
+
+
 
 
 

@@ -3,7 +3,9 @@
 // ===================================================================
 
 .order__container {
-    margin: 0;
+    width: $pageWidthDesk;
+    margin: auto;
+    border: 2px solid grey;
 }
 
 .order__head {
