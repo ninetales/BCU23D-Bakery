@@ -1,4 +1,4 @@
-const logged = 0;
+let logged = localStorage.getItem('logged') ? parseInt(localStorage.getItem('logged')) : 0;
 const loggedUser = users[logged];
 
 // Returns orders for spicific user based on ID, or all orders if its the Admin ID 1...
@@ -16,7 +16,7 @@ function welcomeMsg(loggedId) {
   const headContent = headDiv.textContent;
   console.log(loggedId);
   
-  const newContent = `${headContent} ${users[loggedId].username}`;
+  const newContent = `Order History - ${users[loggedId].username}`;
 
   headDiv.textContent = newContent;
 }
@@ -113,6 +113,18 @@ function createListElements() {
     orderList.appendChild(orderCard);
   }
 }
+
+const switchBtn = document.getElementById('user__switch')
+switchBtn.addEventListener('click', e => {
+  logged = logged === 0 ? 1 : 0;
+  console.log(logged);
+
+  localStorage.setItem('logged', logged)
+
+  window.location.reload()
+
+  welcomeMsg(logged);
+})
 
 welcomeMsg(logged);
 createListElements();
