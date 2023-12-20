@@ -74,14 +74,14 @@ function addToBasket(productId, amount) {
 }
 
 // =========  updateBasketCount()  =========
-function updateBasketCount() {
-  //updates the basket icon to show the number of items in the basket
-  const basketCountElement = document.querySelector(
-    '.header-button__basket-count'
-  );
-  if (!basketCountElement) return; // If basket button doesn't exist, stop function
-  let totalCount = basket.reduce((sum, item) => sum + item.amount, 0); //0 signifies the initial value of the sum
-  basketCountElement.textContent = totalCount; //updates basketCountElement with totalCount value
+function updateBasketCount() { //updates the basket icon to show the number of items in the basket
+  const basketCountElement = document.querySelectorAll(".header-button__basket-count");
+  let totalCount = basket.reduce((sum, item) => sum + item.amount, 0); //0 signifies the initial value of the sum 
+  if (basketCountElement.length !== 0) {
+    basketCountElement.forEach((counter) => {
+      counter.textContent = totalCount; //updates basketCountElement with totalCount value
+    });
+  }
 } // =========  END updateBasketCount()  =========
 
 // ========= Populate teh basket list with products from items added to the basket array  =========
@@ -144,10 +144,9 @@ function populateBasketList() {
         productDetails.appendChild(productNameEl);
 
         // Determine price text
-        const priceText =
-          typeof product.price.regular === 'number'
-            ? `$${product.price.regular.toFixed(2)}`
-            : 'Price not available';
+        const priceText = typeof product.price.regular === 'number'
+          ? `$${product.price.regular.toFixed(2)}`
+          : 'Price not available';
 
         // Create and append product price
         const productPriceEl = document.createElement('span');
@@ -229,12 +228,8 @@ function updateOrderSummary() {
   const total = subtotal + vat + shippingRate;
 
   //displaying the totals in the order summary section
-  document.querySelector(
-    '.price p:nth-child(2)'
-  ).textContent = `Subtotal: $${subtotal.toFixed(2)}`;
-  document.querySelector(
-    '.price p:nth-child(4)'
-  ).textContent = `VAT: $${vat.toFixed(2)}`;
+  document.querySelector('.order-summary p:nth-child(2)').textContent = `Subtotal: $${subtotal.toFixed(2)}`;
+  document.querySelector('.order-summary p:nth-child(4)').textContent = `VAT: $${vat.toFixed(2)}`;
   document.querySelector('.total__price').textContent = total.toFixed(2);
 }
 
@@ -248,7 +243,7 @@ function resetBasket() {
 } // =========  END resetBasket() - Reset the whole basket  =========
 
 // =========  DOM functionality  =========
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener("DOMContentLoaded", function () {
   //Retrieve the UL element.
   basketList = document.querySelector('.basket__items');
 
