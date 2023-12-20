@@ -120,7 +120,6 @@ padding-left: pxToRem(8);
 padding-right:pxToRem(8);
 }
 
-
 .basket__items-total {
     position: absolute;
     top: pxToRem(10);
@@ -142,9 +141,6 @@ padding-right:pxToRem(8);
     padding: pxToRem(20);
     height: pxToRem(300);
 }
-
-
-
 
 
 /*****************************************************/
@@ -184,12 +180,7 @@ padding-right:pxToRem(8);
 .payment__button::after {
     content: '→';
     margin-left: 5px;
-}
-
-//**********  End order summary box  *********/
-
-
-
+} //**********  End order summary box  *********/
 
 @media only screen and (max-width:1300px) {
     .payment__button {

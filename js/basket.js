@@ -1,6 +1,3 @@
-//creates the array to save the productId and the amount for each product to be read into the basket
-//potentially this coule be lifted into the basket.js file, but I am not sure where it would go so to not mess up Jonathans code
-
 // =========  GLOBAL Variables  =========
 let basket = [];
 let basketList;
