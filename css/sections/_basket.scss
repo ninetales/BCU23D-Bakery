@@ -182,6 +182,48 @@ padding-right:pxToRem(8);
     margin-left: 5px;
 } //**********  End order summary box  *********/
 
+
+.basket-preview {
+    position: absolute;
+    top: 8%;
+    right: 2%;
+    width: 25%;
+    height: 80%;
+    border-radius: 4px;
+    visibility: hidden;
+    padding: 5px;
+    z-index: 999;
+    background-color: rgba(64, 46, 50, 0.6);
+    backdrop-filter: blur(3px);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.basket-preview button {
+    position: relative;
+    display: inline;
+    margin-left: pxToRem(5);
+    margin-top: pxToRem(2);
+}
+
+.preview__Items {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: $list-background-color;
+    padding: pxToRem(3);
+    border-radius: pxToRem(15);
+    border: pxToRem(2) solid $card-border-color;
+    margin: pxToRem(5);
+    width: 100%;
+}
+
+.preview__Items span {
+    font-weight: bolder;
+    max-width: pxToRem(55);
+}
+} //**********  End order summary box  *********/
+
 @media only screen and (max-width:1300px) {
     .payment__button {
         font-size: pxToRem(15);
@@ -191,6 +233,10 @@ padding-right:pxToRem(8);
 @media only screen and (max-width:1000px) {
     .payment__button {
         font-size: pxToRem(11);
+    }
+
+    .basket-preview {
+        width: 30%;
     }
 }
 
@@ -219,7 +265,6 @@ padding-right:pxToRem(8);
         width: 95vw;
     }
 
-
     .order-summary {
         position: fixed;
         bottom: 0;
@@ -232,6 +277,10 @@ padding-right:pxToRem(8);
 
     .order-summary>* {
         margin-top: pxToRem(2);
+    }
+
+    .basket-preview {
+        width: 45%;
     }
 
 }

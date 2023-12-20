@@ -99,7 +99,7 @@ function updateBasketCount() {
 function populateBasketList() {
   if (!basketList) return; //Ensure the basketList is available
 
-  basketList.innerHTML = ""; //Clear the current contents of the basket list
+  basketList.innerHTML = ''; //Clear the current contents of the basket list
 
   if (basket.length === 0) {
     //If the basket is empty this message is displayed
@@ -251,6 +251,7 @@ function updateOrderSummary() {
     (sum, item) => sum + (item.totalPrice || 0),
     0
   );
+
   const vat = subtotal * vatRate;
   const total = subtotal + vat + shippingRate;
 
@@ -274,11 +275,11 @@ function resetBasket() {
 } // =========  END resetBasket() - Reset the whole basket  =========
 
 // =========  DOM functionality  =========
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   //Retrieve the UL element.
   basketList = document.querySelector(".basket__items");
 
-  const savedBasket = localStorage.getItem("basket"); //Keeps the basket count up to date when the page is refreshed
+  const savedBasket = localStorage.getItem('basket'); //Keeps the basket count up to date when the page is refreshed
   if (savedBasket) {
     basket = JSON.parse(savedBasket);
   }
@@ -306,8 +307,154 @@ document.addEventListener("DOMContentLoaded", function () {
 }); // =========  END DOM functionality  =========
 
 //makes sure an update on any tab is reflected on all tabs
-window.addEventListener("storage", function (basketMemory) {
-  if (basketMemory.key === "basket") {
+window.addEventListener('storage', function (basketMemory) {
+  if (basketMemory.key === 'basket') {
     basket = JSON.parse(basketMemory.newValue);
+  }
+});
+
+/*************************************************************************
+ **************************BASKET PREVIEW**********************************
+ **************************************************************************/
+
+document.addEventListener('DOMContentLoaded', function () {
+  const basketButton = document.querySelector('.header-button__basket');
+  const basketPreview = document.querySelector('.basket-preview');
+
+  if (basketButton && basketPreview) {
+    basketButton.addEventListener('mouseenter', function () {
+      // show the preview when hovering
+      showBasketPreview();
+      populateBasketList();
+    });
+
+    basketButton.addEventListener('mouseleave', function () {
+      // Hide preview when not hovering
+      hideBasketPreview();
+    });
+
+    //So the hover effect continues while within the preview box
+    basketPreview.addEventListener('mouseenter', function () {
+      showBasketPreview();
+    });
+
+    basketPreview.addEventListener('mouseleave', function () {
+      hideBasketPreview();
+    });
+  }
+});
+//setting timer variable
+let hideTimeout;
+
+function showBasketPreview() {
+  // clearing existing timeout
+  clearTimeout(hideTimeout);
+  // populate items here
+  const basketPreview = document.querySelector('.basket-preview');
+  basketPreview.style.visibility = 'visible';
+
+  //This one is to clear the preview from previous data
+  basketPreview.innerHTML = '';
+
+  // Saves amount to every product, will be used to display quantity
+  const basketItemMap = {};
+  basket.forEach((item) => {
+    basketItemMap[item.productId] = item.amount;
+  });
+
+  // creating an array with numeric product ids
+
+  const basketProductIds = basket.map((item) => Number(item.productId));
+  // Searches baskeProductIds and includes the product.id that it finds into a new array
+  const matchingProducts = products.filter((product) =>
+    basketProductIds.includes(product.id)
+  );
+
+  // Looping through matchingProducts to see what products lies within
+  matchingProducts.forEach((product) => {
+    const productElement = document.createElement('div');
+    productElement.setAttribute('class', 'preview__Items');
+    // Display product name and price
+    const productName = document.createElement('span');
+    productName.textContent = `${product.name}`;
+    productElement.appendChild(productName);
+
+    // Display product price, turn it from an object into a number
+    const productPrice = document.createElement('span');
+    // Checks to see if product has a property named 'regular' and if it's a number
+    productPrice.textContent =
+      typeof product.price.regular === 'number'
+        ? // if it is a number then show price with two decimals
+          `$${product.price.regular.toFixed(2)}`
+        : //if not well, then show price not available
+          'Price not available';
+    productElement.appendChild(productPrice);
+
+    // Goes through basketItemMap to check for set amount.
+    const quantityInBasket = basketItemMap[product.id] || 0;
+    const quantityElement = document.createElement('span');
+
+    quantityElement.textContent = `Qty: ${quantityInBasket}`;
+    productElement.appendChild(quantityElement);
+
+    // Display product image
+    if (product.image && product.image.length > 0) {
+      const imageElement = document.createElement('img');
+      imageElement.setAttribute('class', 'basket__img-con');
+      imageElement.src = product.image[0].src;
+      imageElement.alt = product.image[0].alt;
+      productElement.appendChild(imageElement);
+    }
+
+    basketPreview.appendChild(productElement);
+  });
+
+  const goToBasketButton = document.createElement('button');
+  goToBasketButton.textContent = 'Go to checkout';
+  goToBasketButton.addEventListener('click', function () {
+    // Redirect to the basket site
+    window.location.href = 'basket.html';
+  });
+
+  const previewResetButton = document.createElement('button');
+  previewResetButton.textContent = 'Reset Basket';
+  // Resets the basket when pressed
+  previewResetButton.addEventListener('click', function () {
+    resetBasket();
+  });
+  // Had to add this line of code otherwise the preview wouldn't refresh unless i re-hovered.
+  previewResetButton.addEventListener('click', function () {
+    showBasketPreview();
+  });
+
+  basketPreview.appendChild(goToBasketButton);
+  basketPreview.appendChild(previewResetButton);
+
+  basketPreview.style.display = 'block';
+}
+
+function hideBasketPreview() {
+  // Creating the timer so that the preview doesn't dissapear right away
+  hideTimeout = setTimeout(() => {
+    // Hide preview
+    const basketPreview = document.querySelector('.basket-preview');
+    basketPreview.style.visibility = 'hidden';
+  }, 500); // setting the timer to 0.5 sec
+}
+/**************************************************************
+ ******************** PREVIEW DONE ****************************/
+
+// Payment button, alert
+document.addEventListener('DOMContentLoaded', function () {
+  const paymentButton = document.querySelector('.payment__button');
+
+  if (paymentButton) {
+    paymentButton.addEventListener('click', function () {
+      // Message to customer when they press the payment button
+      alert(
+        'Thank you for your order, you will receive a invoice very shortly. Please check your email for confirmation! Pastry Protocol wishes you all the best! 🎂'
+      );
+      resetBasket();
+    });
   }
 });
