@@ -40,11 +40,11 @@ function printOrders(orders) {
   orders.forEach((order) => {
     const status = statusOrders(order);
     const ordersArray = [];
+
     ordersArray.push(
       logged === 0 ? `Order ID: ${order.id} User: ${users[order.user_id].username}` : `Order ID: ${order.id}`,
       `Order date: ${order.order_date}`,
-      `${status}`
-    );
+      !order.processed ? `Order is beeing processed...` : `Estimate delivery: ${order.lev_date}`);
 
     let total = 0;
     order.order_products.forEach((product) => {
@@ -70,6 +70,9 @@ function createListElements() {
   const ordersArray = printOrders(userOrders(orders, logged));
   const lengthOrders = ordersArray.length;
 
+  console.log(ordersArray);
+  
+
   for (let i = 0; i < lengthOrders; i++) {
     const orderCard = document.createElement('div');
     const leftOrder = document.createElement('div');
@@ -83,17 +86,21 @@ function createListElements() {
 
     for (let y = 0; y < lengthRecipe; y++) {
         const item = ordersArray[i][y];
-        const left = y < 3;
+        const left = y < 2;
 
-        if (left) {
+        if (y < 3) {
+          if(logged === 0 && y === 2 && item === `Order is beeing processed...`) {
+            const processBtn = document.createElement('button')
+            processBtn.setAttribute('class', 'process__btn')
+            processBtn.textContent = 'Process Order'
+
+            leftOrder.appendChild(processBtn)
+          }else {
             const h3Element = document.createElement('h3');
             h3Element.textContent = item;
 
             leftOrder.appendChild(h3Element);
-
-            if(logged === 0){
-
-            }
+          }
         }else {
             const pElement = document.createElement('p');
             pElement.textContent = item;
