@@ -1,8 +1,6 @@
-body {
-    background-color: $background-color;
-    max-width: $pageWidthDesk;
-}
-
+// =====================================================================
+// _basket.scss
+// =====================================================================
 .basket-container {
     display: flex;
     flex-direction: column;
@@ -76,7 +74,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: pxToRem(2);    
+    padding: pxToRem(2);
     font-weight: bold;
 }
 
@@ -86,6 +84,7 @@ body {
     align-items: center;
     gap: pxToRem(10);
 }
+
 .quantity-field {
     border-radius: pxToRem(10);
     border: 2px solid $card-border-color;
@@ -112,7 +111,7 @@ body {
 .basket__empty-message {
     font-size: pxToRem(30);
     padding: pxToRem(20);
-    height: pxToRem(300); 
+    height: pxToRem(300);
 }
 
 
@@ -122,7 +121,7 @@ body {
 /*****************************************************/
 /***************** Order summary box *****************/
 /*****************************************************/
-.price {
+.order-summary {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -140,7 +139,7 @@ body {
     margin-right: pxToRem(3);
 }
 
-.price p {
+.order-summary p {
     font-size: pxToRem(15);
 }
 
@@ -151,12 +150,13 @@ body {
     align-self: center;
     white-space: nowrap;
     margin-top: pxToRem(15);
-} 
+}
 
 .payment__button::after {
     content: '→';
     margin-left: 5px;
 }
+
 //**********  End order summary box  *********/
 
 
@@ -197,8 +197,8 @@ body {
         width: 95vw;
     }
 
-    
-    .price {
+
+    .order-summary {
         position: fixed;
         bottom: 0;
         z-index: 10;
@@ -208,7 +208,7 @@ body {
         max-height: pxToRem(200);
     }
 
-    .price > * {
+    .order-summary>* {
         margin-top: pxToRem(2);
     }
 

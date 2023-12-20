@@ -41,7 +41,8 @@ li {
     font-family: $textFont;
 }
 
-button {
+button,
+.btn {
     display: flex;
     align-items: center;
     border: 0;
@@ -57,7 +58,8 @@ button {
     transition: background-color 0.2s ease-in;
 }
 
-button:hover {
+button:hover,
+.btn:hover {
     background-color: shade($button-primary-color, 35%);
 }
 

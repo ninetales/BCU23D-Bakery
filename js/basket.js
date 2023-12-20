@@ -43,7 +43,7 @@ function setQuantity(productId, newQuantity) {
 // This function is called when the user clicks the delete button on a basket item
 function deleteItem(productId) {
 
-const numericProductId = Number(productId);
+  const numericProductId = Number(productId);
 
   // Remove item from basket
   basket = basket.filter(item => Number(item.productId) !== numericProductId);
@@ -73,12 +73,13 @@ function addToBasket(productId, amount) {
 
 // =========  updateBasketCount()  =========
 function updateBasketCount() { //updates the basket icon to show the number of items in the basket
-  const basketCountElement = document.querySelector(
-    ".header-button__basket-count"
-  );
-  if (!basketCountElement) return; // If basket button doesn't exist, stop function
+  const basketCountElement = document.querySelectorAll(".header-button__basket-count");
   let totalCount = basket.reduce((sum, item) => sum + item.amount, 0); //0 signifies the initial value of the sum 
-  basketCountElement.textContent = totalCount; //updates basketCountElement with totalCount value
+  if (basketCountElement.length !== 0) {
+    basketCountElement.forEach((counter) => {
+      counter.textContent = totalCount; //updates basketCountElement with totalCount value
+    });
+  }
 } // =========  END updateBasketCount()  =========
 
 // ========= Populate teh basket list with products from items added to the basket array  =========
@@ -105,13 +106,13 @@ function populateBasketList() {
 
         //create list item
         let listItem = document.createElement('li');
-        
+
         //create div for image
         const imgCon = document.createElement('div');
         imgCon.setAttribute('class', 'basket__img-con');
 
         //create and append image to image div
-        if(product.image && product.image.length > 0) {
+        if (product.image && product.image.length > 0) {
           const img = document.createElement('img');
           img.setAttribute('src', product.image[0].src);
           img.setAttribute('alt', product.image[0].alt);
@@ -139,8 +140,8 @@ function populateBasketList() {
 
         // Determine price text
         const priceText = typeof product.price.regular === 'number'
-        ? `$${product.price.regular.toFixed(2)}`
-        : 'Price not available';
+          ? `$${product.price.regular.toFixed(2)}`
+          : 'Price not available';
 
         // Create and append product price
         const productPriceEl = document.createElement('span');
@@ -159,7 +160,7 @@ function populateBasketList() {
         // Append product details container to the list item
         midSectionCon.appendChild(productDetails);
 
-        
+
         // Create container for quantity manipulation
         const quantityContainer = document.createElement('div');
         quantityContainer.setAttribute('class', 'quantity-container');
@@ -189,7 +190,7 @@ function populateBasketList() {
 
         // Create and append delete button
         const deleteButton = document.createElement('button');
-        deleteButton.setAttribute('class','basket__items-delete');
+        deleteButton.setAttribute('class', 'basket__items-delete');
         deleteButton.textContent = 'Delete';
         deleteButton.onclick = () => {
           console.log('delete', product.id);
@@ -218,8 +219,8 @@ function updateOrderSummary() {
   const total = subtotal + vat + shippingRate;
 
   //displaying the totals in the order summary section
-  document.querySelector('.price p:nth-child(2)').textContent = `Subtotal: $${subtotal.toFixed(2)}`;
-  document.querySelector('.price p:nth-child(4)').textContent = `VAT: $${vat.toFixed(2)}`;
+  document.querySelector('.order-summary p:nth-child(2)').textContent = `Subtotal: $${subtotal.toFixed(2)}`;
+  document.querySelector('.order-summary p:nth-child(4)').textContent = `VAT: $${vat.toFixed(2)}`;
   document.querySelector('.total__price').textContent = total.toFixed(2);
 }
 
@@ -234,7 +235,7 @@ function resetBasket() {
 } // =========  END resetBasket() - Reset the whole basket  =========
 
 // =========  DOM functionality  =========
-document.addEventListener("DOMContentLoaded", function () { 
+document.addEventListener("DOMContentLoaded", function () {
   //Retrieve the UL element.
   basketList = document.querySelector('.basket__items');
 
@@ -259,10 +260,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const resetButton = document.querySelector('.header-button__basket-reset');
   if (resetButton) {
-    resetButton.addEventListener('click', function (){
+    resetButton.addEventListener('click', function () {
       resetBasket();
     });
-  }  
+  }
 }); // =========  END DOM functionality  =========
 
 
