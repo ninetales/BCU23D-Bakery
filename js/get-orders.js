@@ -11,18 +11,19 @@ function userOrders(orders, userId) {
 }
 
 // Manipulates the h2 element to match the current logged user...
-function welcomeMsg(loggedUser) {
+function welcomeMsg(loggedId) {
   const headDiv = document.querySelector('.order__container .order__head');
   const headContent = headDiv.textContent;
-
-  const newContent = `${headContent} ${users[logged].username}`;
+  console.log(loggedId);
+  
+  const newContent = `${headContent} ${users[loggedId].username}`;
 
   headDiv.textContent = newContent;
 }
 
 // Returns process status, and delivery date if true
 function statusOrders(order) {
-  if (!order.process_date) {
+  if (!order.processed) {
     if (logged === 0) {
       return `Needs to be processed.`;
     } else {
@@ -40,6 +41,7 @@ function printOrders(orders) {
     const status = statusOrders(order);
     const ordersArray = [];
     ordersArray.push(
+      logged === 0 ? `Order ID: ${order.id} User: ${users[order.user_id].username}` : `Order ID: ${order.id}`,
       `Order date: ${order.order_date}`,
       `${status}`
     );
@@ -81,7 +83,7 @@ function createListElements() {
 
     for (let y = 0; y < lengthRecipe; y++) {
         const item = ordersArray[i][y];
-        const left = y < 2;
+        const left = y < 3;
 
         if (left) {
             const h3Element = document.createElement('h3');
