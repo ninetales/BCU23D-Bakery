@@ -26,11 +26,12 @@
 }
 
 .order__left, .order__right {
-    padding: pxToRem(10)
+    margin: 0;
+    padding: pxToRem(30)
 }
 
 .order__left {
-    width: 50%;
+    width: 30%;
     border-right: 2px solid rgb(200, 188, 188);
 }
 
@@ -45,8 +46,10 @@
 }
 
 #user__switch {
+    width: pxToRem(90);
     margin: auto;
     background-color: rgba(255, 0, 0, 0.253);
+    text-align: center;
 
 }
 
@@ -70,7 +73,7 @@
     
     .card__order {
         flex-direction: column;
-        align-items: center;
+        // align-items: center;
     }
     .order__left {
         width: auto;
