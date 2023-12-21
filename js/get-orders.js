@@ -6,7 +6,6 @@ let switchTxt = localStorage.getItem('switchTxt')
   ? String(localStorage.getItem('switchTxt'))
   : 'Admin';
 
-
 // Returns orders for spicific user based on ID, or all orders if its the Admin ID 1...
 function userOrders(orders, userId) {
   if (userId === 0) {
@@ -74,10 +73,14 @@ function printOrders(orders) {
       total = total + Number(price_tot);
     });
 
-    ordersArray.push('----------------------------------------------')
-    ordersArray.push(`Value added taxes: ${total*vatRate}$  |  Shipping cost: ${shippingRate}$`)
+    ordersArray.push('----------------------------------------------');
+    ordersArray.push(
+      `Value added taxes: ${
+        total * vatRate
+      }$  |  Shipping cost: ${shippingRate}$`
+    );
 
-    total = (total + (total*vatRate) + shippingRate).toFixed(2)
+    total = (total + total * vatRate + shippingRate).toFixed(2);
     ordersArray.push(`Total: ${total}$`);
     elementsArray.push(ordersArray);
   });
@@ -144,14 +147,14 @@ function createListElements() {
 
 // Temp button to switch between admin and user. OBS: For presentation purpose only...
 const switchBtn = document.getElementById('user__switch');
-switchBtn.textContent = switchTxt;  
+switchBtn.textContent = switchTxt;
 
 switchBtn.addEventListener('click', () => {
   logged = logged === 0 ? 1 : 0;
-  switchTxt = switchTxt === 'Admin' ? 'User' : 'Admin'
+  switchTxt = switchTxt === 'Admin' ? 'User' : 'Admin';
 
   localStorage.setItem('logged', logged);
-  localStorage.setItem('switchTxt', switchTxt)
+  localStorage.setItem('switchTxt', switchTxt);
 
   window.location.reload();
 
@@ -162,13 +165,12 @@ welcomeMsg(logged);
 createListElements();
 
 // Button for Admin to process orders. Only fires up a dummy alert atm...
-const processBtn = document.querySelectorAll('.process__btn')
+const processBtn = document.querySelectorAll('.process__btn');
 
-processBtn.forEach( (btn, index) => {
-  btn.addEventListener('click', e => {
-    alert('The order has been sent to the production team for furthur processing! Have a frikkin fantastic day!!!')
-    
-  })
-})
-
-
+processBtn.forEach((btn, index) => {
+  btn.addEventListener('click', (e) => {
+    alert(
+      'The order has been sent to the production team for furthur processing! Have a frikkin fantastic day!!!'
+    );
+  });
+});
