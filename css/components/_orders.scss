@@ -1,0 +1,108 @@
+// ===================================================================
+// _orders.scss
+// ===================================================================
+
+.order__container {
+  width: $pageWidthDesk;
+  margin: auto;
+  padding: pxToRem(30);
+}
+
+.order__header {
+  margin: 0;
+  padding: pxToRem(10);
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.order__list {
+  padding: pxToRem(20);
+}
+
+.card__order {
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.order__left,
+.order__right {
+  margin: 0;
+  padding: pxToRem(30);
+}
+
+.order__left {
+  width: 30%;
+  border-right: 2px solid rgb(200, 188, 188);
+}
+
+.process__btn {
+  margin-top: pxToRem(10);
+}
+
+#temp__login {
+  display: flex;
+  flex-direction: column;
+}
+
+#user__switch {
+  width: pxToRem(90);
+  margin: auto;
+  background-color: rgba(255, 0, 0, 0.253);
+  text-align: center;
+}
+
+@media screen and (max-width: $pageWidthDesk) {
+  .order__container {
+    width: auto;
+  }
+  // .card__order {
+  //     flex-direction: column;
+  // }
+  .order__left {
+    width: auto;
+    border-right: 0;
+  }
+}
+
+@media screen and (max-width: $pageWidthTablet) {
+  .order__container {
+    width: auto;
+  }
+
+  .card__order {
+    flex-direction: column;
+    // align-items: center;
+  }
+  .order__left {
+    width: auto;
+    border-right: 0;
+  }
+}
+
+@media screen and (max-width: $pageWidthMobile) {
+  .order__container {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  .order__main {
+    padding: 0;
+    margin: 0;
+  }
+  .card__order {
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+
+    h3,
+    p {
+      padding: 0;
+      margin: 0;
+    }
+  }
+  .order__left {
+    width: auto;
+    border-right: 0;
+  }
+}
