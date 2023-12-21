@@ -37,3 +37,14 @@
 .process__btn {
     margin-top: pxToRem(10)
 }
+
+#temp__login {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#user__switch {
+    margin: auto;
+    background-color: rgba(255, 0, 0, 0.253);
+}

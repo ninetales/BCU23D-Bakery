@@ -27,7 +27,7 @@ function welcomeMsg(loggedId) {
   headDiv.textContent = newContent;
 }
 
-// Returns process status, and delivery date if true
+// Returns process status, and delivery date if true...
 function statusOrders(order) {
   if (!order.processed) {
     if (logged === 0) {
@@ -49,7 +49,7 @@ function printOrders(orders) {
 
     ordersArray.push(
       logged === 0
-        ? `Order ID: ${order.id} User: ${users[order.user_id].username}`
+        ? `Order ID: ${order.id} | User: ${users[order.user_id].username}`
         : `Order ID: ${order.id}`,
       `Order date: ${order.order_date}`,
       !order.processed
@@ -57,7 +57,10 @@ function printOrders(orders) {
         : `Estimate delivery: ${order.lev_date}`
     );
 
+    const vatRate = 0.12; // 12% VAT (mons)
+    const shippingRate = 10; // $10 fixed price shippingRate
     let total = 0;
+
     order.order_products.forEach((product) => {
       const item = products[product.product_id];
       const pkg_amount = `${item.itemsPerPackage}`;
@@ -70,18 +73,22 @@ function printOrders(orders) {
       );
       total = total + Number(price_tot);
     });
+
+    ordersArray.push('----------------------------------------------')
+    ordersArray.push(`Value added taxes: ${total*vatRate}$  |  Shipping cost: ${shippingRate}$`)
+
+    total = (total + (total*vatRate) + shippingRate).toFixed(2)
     ordersArray.push(`Total: ${total}$`);
     elementsArray.push(ordersArray);
   });
   return elementsArray;
 }
 
+// Function to create the order list...
 function createListElements() {
   const orderList = document.querySelector('#order__main .order__list');
   const ordersArray = printOrders(userOrders(orders, logged));
   const lengthOrders = ordersArray.length;
-
-  console.log(ordersArray);
 
   for (let i = 0; i < lengthOrders; i++) {
     const orderCard = document.createElement('div');
@@ -124,21 +131,22 @@ function createListElements() {
     const pElement = document.createElement('p');
     const h3Element = document.createElement('h3');
     h3Element.textContent = ordersArray[i][lengthRecipe];
-    pElement.textContent = '-----------------------------';
 
     rightOrder.appendChild(pElement);
     rightOrder.appendChild(h3Element);
 
     orderCard.appendChild(leftOrder);
     orderCard.appendChild(rightOrder);
+
     orderList.appendChild(orderCard);
   }
 }
 
+// Temp button to switch between admin and user. OBS: For presentation purpose only...
 const switchBtn = document.getElementById('user__switch');
 switchBtn.textContent = switchTxt;  
 
-switchBtn.addEventListener('click', (e) => {
+switchBtn.addEventListener('click', () => {
   logged = logged === 0 ? 1 : 0;
   switchTxt = switchTxt === 'Admin' ? 'User' : 'Admin'
 
@@ -152,3 +160,15 @@ switchBtn.addEventListener('click', (e) => {
 
 welcomeMsg(logged);
 createListElements();
+
+// Button for Admin to process orders. Only fires up a dummy alert atm...
+const processBtn = document.querySelectorAll('.process__btn')
+
+processBtn.forEach( (btn, index) => {
+  btn.addEventListener('click', e => {
+    alert('The order has been sent to the production team for furthur processing! Have a frikkin fantastic day!!!')
+    
+  })
+})
+
+
