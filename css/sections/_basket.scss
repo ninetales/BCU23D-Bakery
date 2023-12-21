@@ -78,6 +78,10 @@
     font-weight: bold;
 }
 
+.basket__items-pkg {
+    color: $light-text-color;
+}
+
 .quantity-container {
     display: flex;
     flex-direction: row;
@@ -90,6 +94,30 @@
     border: 2px solid $card-border-color;
     width: pxToRem(70);
     text-align: center;
+}
+
+// Removing the arrows from the input field (chrome, safari, opera, edge)
+.quantity-field::-webkit-inner-spin-button,
+.quantity-field::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+// Removing the arrows from the input field (firefox)
+.quantity-field[type=number] {
+    -moz-appearance: textfield;
+}
+
+.basket__items-increment {
+    padding: pxToRem(2);
+    padding-left: pxToRem(8);
+    padding-right: pxToRem(8);
+}
+
+.basket__items-decrement {
+    padding: pxToRem(2);
+    padding-left: pxToRem(8);
+    padding-right: pxToRem(8);
 }
 
 .basket__items-total {
@@ -113,9 +141,6 @@
     padding: pxToRem(20);
     height: pxToRem(300);
 }
-
-
-
 
 
 /*****************************************************/
@@ -160,7 +185,6 @@
 //**********  End order summary box  *********/
 
 
-
 .basket-preview {
     position: absolute;
     top: 8%;
@@ -201,6 +225,8 @@
     max-width: pxToRem(55);
 }
 
+//**********  End order summary box  *********/
+
 @media only screen and (max-width:1300px) {
     .payment__button {
         font-size: pxToRem(15);
@@ -220,12 +246,13 @@
 @media only screen and (max-width:800px) {
     .basket-container {
         display: flex;
+        flex-direction: column;
         align-items: center;
     }
 
     .basket {
         flex-direction: column;
-        min-height: 100vw;
+        min-height: auto;
         min-width: 100vw;
     }
 
@@ -233,13 +260,13 @@
         width: 100vw;
         min-height: 50vh;
         align-items: center;
+        padding-bottom: pxToRem(200);
     }
 
     .basket__items li {
         flex: auto;
         width: 95vw;
     }
-
 
     .order-summary {
         position: fixed;
